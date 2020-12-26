@@ -1,2 +1,3 @@
+include ':frogonotification'
 include ':app'
 rootProject.name = "Notification"
