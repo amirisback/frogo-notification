@@ -9,6 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Notification">
+        <activity android:name=".stack.StackNotifActivity"></activity>
+
+        <receiver
+            android:name=".custom.NotificationBroadcastReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <service
+            android:name=".custom.NotificationService"
+            android:exported="false" />
+
+        <activity android:name=".custom.ReplyActivity" />
+        <activity android:name=".custom.CustomNotifActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

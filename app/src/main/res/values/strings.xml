@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">Notification</string>
+    <string name="app_name">SimpleNotif</string>
+    <string name="content_title">Content title</string>
+    <string name="content_text">Content text</string>
+    <string name="subtext">Sub text</string>
+    <string name="send_notif">Send Notif</string>
+    <string name="text_show_notif">Testing Notif With Reply</string>
+    <string name="notif_action_reply">Reply Notif</string>
+    <string name="notif_title">New Notification</string>
+    <string name="notif_content">Ada notif baru</string>
+    <string name="notif_title_sent">Reply Sent</string>
+    <string name="notif_content_sent">Message has been sent</string>
+    <string name="hint_reply">Masukkan reply</string>
+    <string name="hintSender">Masukkan nama sender</string>
+    <string name="hintMessage">Masukkan message</string>
+    <string name="sendNotif">Kirim</string>
+    <string name="navigate_custom">go to custom notif</string>
+    <string name="navigate_stack">go to stack notif</string>
 </resources>
