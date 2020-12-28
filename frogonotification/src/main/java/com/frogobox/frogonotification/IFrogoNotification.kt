@@ -1,7 +1,7 @@
 package com.frogobox.frogonotification
 
 import android.app.PendingIntent
-import android.content.res.Resources
+import com.frogobox.frogonotification.attr.IFrogoActionRemoteInput
 
 /*
  * Created by Faisal Amir on 28/12/2020
@@ -16,9 +16,6 @@ import android.content.res.Resources
  *
  */
 interface IFrogoNotification {
-
-    //
-    fun setResoures(resources: Resources): FrogoNotification.Inject
 
     //
     fun setNotificationId(notificationId: Int) : FrogoNotification.Inject
@@ -49,6 +46,15 @@ interface IFrogoNotification {
 
     //
     fun setAutoCancel(autoCancel: Boolean): FrogoNotification.Inject
+
+    //
+    fun showWhen(show: Boolean): FrogoNotification.Inject
+
+    //
+    fun setupWithVibration(): FrogoNotification.Inject
+
+    //
+    fun setupActionRemoteInput(listener: IFrogoActionRemoteInput): FrogoNotification.Inject
 
     //
     fun setupWithFrogoStyle(): FrogoNotification.Inject
