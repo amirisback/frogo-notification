@@ -14,18 +14,24 @@ import android.app.PendingIntent
  * All rights reserved
  *
  */
-interface IFrogoActionRemoteInput {
+interface IFNActionRemoteInput {
 
+    //
     fun setRemoteInputResultKey(): String
 
+    //
     fun setRemoteInputLabel(): String
 
+    //
     fun setActionIcon(): Int
 
+    //
     fun setActionTitle(): String
 
+    //
     fun setActionIntent(): PendingIntent?
 
+    //
     fun setAllowGeneratedReplies(): Boolean
 
 }

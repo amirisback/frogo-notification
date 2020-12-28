@@ -1,4 +1,4 @@
-package com.frogobox.frogonotification
+package com.frogobox.frogonotification.attr
 
 /*
  * Created by Faisal Amir on 28/12/2020
@@ -12,10 +12,18 @@ package com.frogobox.frogonotification
  * All rights reserved
  *
  */
-object Utils {
+interface IFNInboxStyle {
 
-    const val FROGO_NOTIFICATION_ID = 0
-    const val FROGO_CHANNEL_ID = "FROGO_CHANNEL_ID"
-    const val FROGO_CHANNEL_NAME = "FROGO_CHANNEL_NAME"
+    //
+    fun addLine1(): String
+
+    //
+    fun addLine2(): String
+
+    //
+    fun setBigContentTitle(): String
+
+    //
+    fun setSummaryText(): String
 
 }

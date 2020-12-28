@@ -1,7 +1,10 @@
 package com.frogobox.frogonotification
 
+import android.app.Notification
 import android.app.PendingIntent
-import com.frogobox.frogonotification.attr.IFrogoActionRemoteInput
+import androidx.core.app.NotificationCompat
+import com.frogobox.frogonotification.attr.IFNActionRemoteInput
+import com.frogobox.frogonotification.attr.IFNInboxStyle
 
 /*
  * Created by Faisal Amir on 28/12/2020
@@ -16,9 +19,6 @@ import com.frogobox.frogonotification.attr.IFrogoActionRemoteInput
  *
  */
 interface IFrogoNotification {
-
-    //
-    fun setNotificationId(notificationId: Int) : FrogoNotification.Inject
 
     //
     fun setChannelId(channelId: String): FrogoNotification.Inject
@@ -48,13 +48,25 @@ interface IFrogoNotification {
     fun setAutoCancel(autoCancel: Boolean): FrogoNotification.Inject
 
     //
+    fun setStyle(style: NotificationCompat.Style): FrogoNotification.Inject
+
+    //
     fun showWhen(show: Boolean): FrogoNotification.Inject
+
+    //
+    fun setGroup(groupKey: String): FrogoNotification.Inject
+
+    //
+    fun setGroupSummary(): FrogoNotification.Inject
 
     //
     fun setupWithVibration(): FrogoNotification.Inject
 
     //
-    fun setupActionRemoteInput(listener: IFrogoActionRemoteInput): FrogoNotification.Inject
+    fun setupActionRemoteInput(listenerIFNActionRemoteInput: IFNActionRemoteInput): FrogoNotification.Inject
+
+    //
+    fun setupInboxStyle(listenerIFNInboxStyle: IFNInboxStyle): FrogoNotification.Inject
 
     //
     fun setupWithFrogoStyle(): FrogoNotification.Inject
@@ -63,6 +75,6 @@ interface IFrogoNotification {
     fun build(): FrogoNotification.Inject
 
     //
-    fun launch()
+    fun launch(notificationId: Int)
 
 }
