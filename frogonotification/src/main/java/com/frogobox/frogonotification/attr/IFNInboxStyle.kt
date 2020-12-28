@@ -14,16 +14,16 @@ package com.frogobox.frogonotification.attr
  */
 interface IFNInboxStyle {
 
-    //
+    // Initialize for Inbox Style Add Line
     fun addLine1(): String
 
-    //
+    // Initialize for Inbox Style Add Line
     fun addLine2(): String
 
-    //
+    // Initialize for Inbox Style Big Content Title
     fun setBigContentTitle(): String
 
-    //
+    // Initialize for Inbox Style Summary Text
     fun setSummaryText(): String
 
 }

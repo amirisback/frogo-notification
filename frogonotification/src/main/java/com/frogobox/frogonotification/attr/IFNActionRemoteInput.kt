@@ -16,22 +16,22 @@ import android.app.PendingIntent
  */
 interface IFNActionRemoteInput {
 
-    //
+    // Initialize for Remote Input Result Key
     fun setRemoteInputResultKey(): String
 
-    //
+    // Initialize for Remote Input Label
     fun setRemoteInputLabel(): String
 
-    //
+    // Initialize for Action Icon
     fun setActionIcon(): Int
 
-    //
+    // Initialize for Action Title
     fun setActionTitle(): String
 
-    //
+    // Initialize for Action Intent
     fun setActionIntent(): PendingIntent?
 
-    //
+    // Initialize for Action Allow Generated Replies
     fun setAllowGeneratedReplies(): Boolean
 
 }
