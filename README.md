@@ -8,7 +8,7 @@ frogo-notification is under huge large development
 # Version Release
 This Is Latest Release
 
-    $version_release = 1.0.0
+    $version_release = 1.0.1
 
 What's New??
 
@@ -32,7 +32,7 @@ What's New??
 
     dependencies {
             // library frogo-notification
-            implementation 'com.github.amirisback:frogo-notification:1.0.0'
+            implementation 'com.github.amirisback:frogo-notification:1.0.1'
     }
 
 ### Step 3. Implement frogo-notification
