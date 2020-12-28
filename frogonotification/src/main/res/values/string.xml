@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+ * Created by  on 
+ *  Source Code
+ * =========================================
+ * Name     : Muhammad Faisal Amir
+ * E-mail   : faisalamircs@gmail.com
+ * Github   : github.com/amirisback
+ * =========================================
+ * Copyright (C)  FrogoBox Inc.      
+ * All rights reserved
+ *
+-->
+
+<resources>
+
+    <string name="frogo_content_title">Frogo Content Title</string>
+    <string name="frogo_content_text">Frogo Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</string>
+    <string name="frogo_subtext">Frogo Sub Text</string>
+
+</resources>

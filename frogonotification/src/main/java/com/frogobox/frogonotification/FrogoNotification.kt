@@ -8,6 +8,7 @@ import android.content.Context
 import android.content.res.Resources
 import android.graphics.BitmapFactory
 import android.os.Build
+import android.util.Log
 import androidx.core.app.NotificationCompat
 
 /*
@@ -24,98 +25,164 @@ import androidx.core.app.NotificationCompat
  */
 class FrogoNotification {
 
-    class Inject {
+    class Inject : IFrogoNotification {
 
         private lateinit var context: Context
-        private lateinit var contentTitle: CharSequence
-        private lateinit var contentText: CharSequence
-        private lateinit var contentSubText: CharSequence
         private lateinit var resources: Resources
-        private lateinit var pendingIntent: PendingIntent
         private lateinit var notificationManager: NotificationManager
         private lateinit var notification: Notification
 
-        private var smallIcon: Int = 0
-        private var largeIcon: Int = 0
-        private var autoCancel: Boolean = false
+        private var smallIcon: Int = R.drawable.ic_frogo_notif
 
-        private var notification_id: Int = 0
-        private var channel_id: String = ""
-        private var channel_name: String = ""
+        private var contentTitle: CharSequence? = null
+        private var contentText: CharSequence? = null
+        private var contentSubText: CharSequence? = null
+        private var pendingIntent: PendingIntent? = null
+        private var largeIcon: Int? = null
+        private var autoCancel: Boolean? = false
 
-        constructor(){
+        private var notification_id: Int = Utils.FROGO_NOTIFICATION_ID
+        private var channel_id: String = Utils.FROGO_CHANNEL_ID(notification_id)
+        private var channel_name: String = Utils.FROGO_CHANNEL_NAME(notification_id)
+
+        constructor() {
         }
 
         constructor(context: Context) {
             this.context = context
-            this.notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            this.notificationManager =
+                context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            Log.d(
+                FrogoNotification::class.java.simpleName,
+                "Initialize Context and Declare Notification Manager"
+            )
         }
 
-        fun setResoures(resources: Resources): Inject {
+        override fun setResoures(resources: Resources): Inject {
             this.resources = resources
+            Log.d(FrogoNotification::class.java.simpleName, "Value of Resource : $resources")
             return this
         }
 
-        fun setNotificationId(notificationId: Int) : Inject {
+        override fun setNotificationId(notificationId: Int): Inject {
             this.notification_id = notificationId
+            Log.d(
+                FrogoNotification::class.java.simpleName,
+                "Value of Notification_ID : $notificationId"
+            )
             return this
         }
 
-        fun setChannelId(channelId: String): Inject {
+        override fun setChannelId(channelId: String): Inject {
             this.channel_id = channelId
+            Log.d(FrogoNotification::class.java.simpleName, "Value of Channel_ID : $channelId")
             return this
         }
 
-        fun setChannelName(channelName: String): Inject {
+        override fun setChannelName(channelName: String): Inject {
             this.channel_name = channelName
+            Log.d(FrogoNotification::class.java.simpleName, "Value of Channel Name : $channelName")
             return this
         }
 
-        fun setContentIntent(intent: PendingIntent): Inject {
+        override fun setContentIntent(intent: PendingIntent): Inject {
             this.pendingIntent = intent
+            Log.d(FrogoNotification::class.java.simpleName, "Value of Intent : $intent")
             return this
         }
 
-        fun setSmallIcon(smallIcon: Int): Inject {
+        override fun setSmallIcon(smallIcon: Int): Inject {
             this.smallIcon = smallIcon
+            Log.d(FrogoNotification::class.java.simpleName, "Value of Small Icon : $smallIcon")
             return this
         }
 
-        fun setLargeIcon(largeIcon: Int): Inject {
+        override fun setLargeIcon(largeIcon: Int): Inject {
             this.largeIcon = largeIcon
+            Log.d(FrogoNotification::class.java.simpleName, "Value of Large Icon : $largeIcon")
             return this
         }
 
-        fun setContentTitle(contentTitle: CharSequence): Inject {
+        override fun setContentTitle(contentTitle: CharSequence): Inject {
             this.contentTitle = contentTitle
+            Log.d(
+                FrogoNotification::class.java.simpleName,
+                "Value of Content Title : $contentTitle"
+            )
             return this
         }
 
-        fun setContentText(contentText: CharSequence): Inject {
+        override fun setContentText(contentText: CharSequence): Inject {
             this.contentText = contentText
+            Log.d(FrogoNotification::class.java.simpleName, "Value of Content Text : $contentText")
             return this
         }
 
-        fun setSubText(contentSubText: CharSequence): Inject {
+        override fun setSubText(contentSubText: CharSequence): Inject {
             this.contentSubText = contentSubText
+            Log.d(
+                FrogoNotification::class.java.simpleName,
+                "Value of Content Sub Text : $contentSubText"
+            )
             return this
         }
 
-        fun setAutoCancel(autoCancel: Boolean): Inject {
+        override fun setAutoCancel(autoCancel: Boolean): Inject {
             this.autoCancel = autoCancel
+            Log.d(FrogoNotification::class.java.simpleName, "Value of Auto Cancel : $autoCancel")
             return this
         }
 
-        fun build(): Inject {
+        override fun setupWithFrogoStyle(): Inject {
+            this.contentTitle = resources.getString(R.string.frogo_content_title)
+            this.contentText = resources.getString(R.string.frogo_content_text)
+            this.contentSubText = resources.getString(R.string.frogo_subtext)
+            this.largeIcon = R.drawable.ic_frogo_notif
+            this.autoCancel = false
 
-            val mBuilder = NotificationCompat.Builder(context, channel_id)
-                .setContentIntent(pendingIntent)
+            Log.d(FrogoNotification::class.java.simpleName, "Using Frogo Notification Template")
+            Log.d(FrogoNotification::class.java.simpleName, "Value of Content Title : $contentTitle")
+            Log.d(FrogoNotification::class.java.simpleName, "Value of Content Text : $contentText")
+            Log.d(FrogoNotification::class.java.simpleName, "Value of Sub Context : $contentSubText")
+            Log.d(FrogoNotification::class.java.simpleName, "Value of Large Icon : $largeIcon")
+            Log.d(FrogoNotification::class.java.simpleName, "Value of Auto Cancel : $autoCancel")
+
+            return this
+        }
+
+        override fun build(): Inject {
+
+            val notificationBuilder = NotificationCompat.Builder(context, channel_id)
                 .setSmallIcon(smallIcon)
-                .setLargeIcon(BitmapFactory.decodeResource(resources, largeIcon))
-                .setContentTitle(contentTitle)
-                .setContentText(contentText)
-                .setSubText(contentSubText)
-                .setAutoCancel(autoCancel)
+
+            if (largeIcon != null) {
+                notificationBuilder.setLargeIcon(
+                    BitmapFactory.decodeResource(
+                        resources,
+                        largeIcon!!
+                    )
+                )
+            }
+
+            if (pendingIntent != null) {
+                notificationBuilder.setContentIntent(pendingIntent)
+            }
+
+            if (contentTitle != null) {
+                notificationBuilder.setContentTitle(contentTitle)
+            }
+
+            if (contentText != null) {
+                notificationBuilder.setContentText(contentText)
+            }
+
+            if (contentSubText != null) {
+                notificationBuilder.setSubText(contentSubText)
+            }
+
+            if (autoCancel != null) {
+                notificationBuilder.setAutoCancel(autoCancel!!)
+            }
 
             /*
                 Android oreo version need add notification channel
@@ -131,21 +198,24 @@ class FrogoNotification {
                     NotificationManager.IMPORTANCE_DEFAULT
                 )
                 channel.description = channel_name
-                mBuilder.setChannelId(channel_id)
+                notificationBuilder.setChannelId(channel_id)
                 notificationManager.createNotificationChannel(channel)
             }
 
-            notification = mBuilder.build()
+            notification = notificationBuilder.build()
 
             return this
         }
 
-        fun launch() {
+        override fun launch() {
+            Log.d(
+                FrogoNotification::class.java.simpleName,
+                "Successfully Notify Frogo Notification"
+            )
             notificationManager.notify(notification_id, notification)
         }
 
     }
-
 
 
 }

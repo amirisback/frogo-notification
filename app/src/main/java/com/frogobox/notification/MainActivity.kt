@@ -14,8 +14,6 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val NOTIFICATION_ID = 1
-        private const val CHANNEL_ID = "channel_01"
-        private const val CHANNEL_NAME = "amir channel"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,17 +27,18 @@ class MainActivity : AppCompatActivity() {
         val pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
 
         val frogoNotification = FrogoNotification.Inject(this)
-            .setNotificationId(NOTIFICATION_ID)
-            .setChannelId(CHANNEL_ID)
-            .setChannelName(CHANNEL_NAME)
             .setResoures(resources)
-            .setContentIntent(pendingIntent)
-            .setSmallIcon(R.drawable.ic_frogo_notif)
-            .setLargeIcon(R.drawable.ic_frogo_notif)
-            .setContentTitle(resources.getString(R.string.content_title))
-            .setContentText(resources.getString(R.string.content_text))
-            .setSubText(resources.getString(R.string.subtext))
-            .setAutoCancel(true)
+            .setNotificationId(NOTIFICATION_ID)
+//            .setChannelId(CHANNEL_ID)
+//            .setChannelName(CHANNEL_NAME)
+//            .setContentIntent(pendingIntent)
+//            .setSmallIcon(R.drawable.ic_frogo_notif)
+//            .setLargeIcon(R.drawable.ic_frogo_notif)
+//            .setContentTitle(resources.getString(R.string.content_title))
+//            .setContentText(resources.getString(R.string.content_text))
+//            .setSubText(resources.getString(R.string.subtext))
+//            .setAutoCancel(true)
+            .setupWithFrogoStyle()
             .build()
 
         frogoNotification.launch()
