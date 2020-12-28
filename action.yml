@@ -1,0 +1,12 @@
+name: 'Frogo-Notification'
+description: 'Library Easy Notification, Full and Clear Documentation, '
+author: 'Muhammad Faisal Amir'
+inputs:
+  myInput:
+    description: 'Input to use'
+    default: 'world'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.myInput }}
