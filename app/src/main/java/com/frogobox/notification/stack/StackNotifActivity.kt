@@ -61,7 +61,7 @@ class StackNotifActivity : AppCompatActivity() {
 
     private fun sendNotif() {
         val mNotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val largeIcon = BitmapFactory.decodeResource(resources, R.drawable.ic_baseline_notifications_48px)
+        val largeIcon = BitmapFactory.decodeResource(resources, R.drawable.ic_notifications)
         val intent = Intent(this, StackNotifActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         val pendingIntent = PendingIntent.getActivity(this, NOTIFICATION_REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT)
@@ -72,7 +72,7 @@ class StackNotifActivity : AppCompatActivity() {
             mBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("New Email from " + stackNotif[idNotification].sender)
                 .setContentText(stackNotif[idNotification].message)
-                .setSmallIcon(R.drawable.ic_baseline_email_24)
+                .setSmallIcon(R.drawable.ic_email)
                 .setLargeIcon(largeIcon)
                 .setGroup(GROUP_KEY_EMAILS)
                 .setContentIntent(pendingIntent)
@@ -86,7 +86,7 @@ class StackNotifActivity : AppCompatActivity() {
             mBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("$idNotification new emails")
                 .setContentText("mail@dicoding.com")
-                .setSmallIcon(R.drawable.ic_baseline_email_24)
+                .setSmallIcon(R.drawable.ic_email)
                 .setGroup(GROUP_KEY_EMAILS)
                 .setGroupSummary(true)
                 .setContentIntent(pendingIntent)

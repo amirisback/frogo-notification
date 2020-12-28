@@ -28,5 +28,5 @@
         android:clickable="true"
         android:focusable="true"
         android:padding="8dp"
-        android:src="@drawable/ic_baseline_send_24" />
+        android:src="@drawable/ic_send" />
 </RelativeLayout>

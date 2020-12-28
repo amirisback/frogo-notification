@@ -58,7 +58,7 @@ class ReplyActivity : AppCompatActivity() {
     private fun updateNotification(notifyId: Int) {
         val notificationManagerCompat = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_baseline_notifications_48px)
+            .setSmallIcon(R.drawable.ic_notifications)
             .setContentTitle(getString(R.string.notif_title_sent))
             .setContentText(getString(R.string.notif_content_sent))
         /*
