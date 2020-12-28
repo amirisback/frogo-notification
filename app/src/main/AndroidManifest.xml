@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Notification">
-        <activity android:name=".stack.StackNotifActivity"></activity>
+        <activity android:name=".stack.StackNotifActivity" />
 
         <receiver
             android:name=".custom.NotificationBroadcastReceiver"
@@ -22,7 +22,7 @@
 
         <activity android:name=".custom.ReplyActivity" />
         <activity android:name=".custom.CustomNotifActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".simple.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

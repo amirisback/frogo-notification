@@ -16,9 +16,9 @@ class NotificationService : IntentService("NotificationService") {
 
     companion object {
         private const val KEY_REPLY = "key_reply_message"
-        const val REPLY_ACTION = "com.dicoding.notification.directreply.REPLY_ACTION"
+        const val REPLY_ACTION = "com.frogobox.notification.directreply.REPLY_ACTION"
         const val CHANNEL_ID = "channel_01"
-        val CHANNEL_NAME: CharSequence = "dicoding channel"
+        val CHANNEL_NAME: CharSequence = "frogobox channel"
 
         fun getReplyMessage(intent: Intent): CharSequence? {
             val remoteInput = RemoteInput.getResultsFromIntent(intent)

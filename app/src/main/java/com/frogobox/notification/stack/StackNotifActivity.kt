@@ -18,7 +18,7 @@ import com.frogobox.notification.databinding.ActivityStackNotifBinding
 class StackNotifActivity : AppCompatActivity() {
 
     companion object {
-        private const val CHANNEL_NAME = "dicoding channel"
+        private const val CHANNEL_NAME = "frogobox channel"
         private const val GROUP_KEY_EMAILS = "group_key_emails"
         private const val NOTIFICATION_REQUEST_CODE = 200
         private const val MAX_NOTIFICATION = 2
@@ -82,10 +82,11 @@ class StackNotifActivity : AppCompatActivity() {
                 .addLine("New Email from " + stackNotif[idNotification].sender)
                 .addLine("New Email from " + stackNotif[idNotification - 1].sender)
                 .setBigContentTitle("$idNotification new emails")
-                .setSummaryText("mail@dicoding")
+                .setSummaryText("mail@frogobox")
+
             mBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
                 .setContentTitle("$idNotification new emails")
-                .setContentText("mail@dicoding.com")
+                .setContentText("mail@frogobox.com")
                 .setSmallIcon(R.drawable.ic_frogo_email)
                 .setGroup(GROUP_KEY_EMAILS)
                 .setGroupSummary(true)

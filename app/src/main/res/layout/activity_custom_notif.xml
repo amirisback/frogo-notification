@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:gravity="center"
-    tools:context=".MainActivity">
+    tools:context=".simple.MainActivity">
 
     <Button
         android:id="@+id/button_show_notification"
