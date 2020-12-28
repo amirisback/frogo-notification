@@ -31,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         val pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
 
         FrogoNotification.Inject(this)
-            .setNotificationId(NOTIFICATION_ID)
             .setChannelId(CHANNEL_ID)
             .setChannelName(CHANNEL_NAME)
             .setContentIntent(pendingIntent)
@@ -42,7 +41,7 @@ class MainActivity : AppCompatActivity() {
             .setSubText(resources.getString(R.string.subtext))
             .setAutoCancel(true)
             .build()
-            .launch()
+            .launch(NOTIFICATION_ID)
 
     }
 

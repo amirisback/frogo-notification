@@ -36,13 +36,12 @@ class NotificationBroadcastReceiver : BroadcastReceiver() {
 
     private fun updateNotification(context: Context, notifyId: Int) {
         FrogoNotification.Inject(context)
-            .setNotificationId(notifyId)
             .setChannelId(CHANNEL_ID)
             .setChannelName(CHANNEL_NAME as String)
             .setSmallIcon(R.drawable.ic_frogo_notif)
             .setContentTitle(context.getString(R.string.notif_title_sent))
             .setContentText(context.getString(R.string.notif_content_sent))
             .build()
-            .launch()
+            .launch(notifyId)
     }
 }

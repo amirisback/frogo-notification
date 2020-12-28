@@ -1,24 +1,21 @@
 package com.frogobox.notification.stack
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.graphics.BitmapFactory
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import androidx.core.app.NotificationCompat
+import com.frogobox.frogonotification.FrogoNotification
+import com.frogobox.frogonotification.attr.IFNInboxStyle
 import com.frogobox.notification.R
 import com.frogobox.notification.databinding.ActivityStackNotifBinding
 
 class StackNotifActivity : AppCompatActivity() {
 
     companion object {
-        private const val CHANNEL_NAME = "frogobox channel"
+        private const val CHANNEL_NAME = "frogobox_channel"
         private const val GROUP_KEY_EMAILS = "group_key_emails"
         private const val NOTIFICATION_REQUEST_CODE = 200
         private const val MAX_NOTIFICATION = 2
@@ -60,59 +57,47 @@ class StackNotifActivity : AppCompatActivity() {
     }
 
     private fun sendNotif() {
-        val mNotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val largeIcon = BitmapFactory.decodeResource(resources, R.drawable.ic_frogo_notif)
         val intent = Intent(this, StackNotifActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         val pendingIntent = PendingIntent.getActivity(this, NOTIFICATION_REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-        val mBuilder: NotificationCompat.Builder
-
+        
+        val frogoNotification = FrogoNotification.Inject(this)
+            .setChannelId(CHANNEL_ID)
+            .setChannelName(CHANNEL_NAME)
+            .setSmallIcon(R.drawable.ic_frogo_email)
+            .setGroup(GROUP_KEY_EMAILS)
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
+        
         //Melakukan pengecekan jika idNotification lebih kecil dari Max Notif
         if (idNotification < MAX_NOTIFICATION) {
-            mBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
-                .setContentTitle("New Email from " + stackNotif[idNotification].sender)
-                .setContentText(stackNotif[idNotification].message)
-                .setSmallIcon(R.drawable.ic_frogo_email)
-                .setLargeIcon(largeIcon)
-                .setGroup(GROUP_KEY_EMAILS)
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true)
-        } else {
-            val inboxStyle = NotificationCompat.InboxStyle()
-                .addLine("New Email from " + stackNotif[idNotification].sender)
-                .addLine("New Email from " + stackNotif[idNotification - 1].sender)
-                .setBigContentTitle("$idNotification new emails")
-                .setSummaryText("mail@frogobox")
 
-            mBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
+            stackNotif[idNotification].message?.let {
+                frogoNotification
+                    .setContentTitle("New Email from " + stackNotif[idNotification].sender)
+                    .setContentText(it)
+                    .setLargeIcon(R.drawable.ic_frogo_notif)
+            }
+
+        } else {
+
+            frogoNotification
                 .setContentTitle("$idNotification new emails")
                 .setContentText("mail@frogobox.com")
-                .setSmallIcon(R.drawable.ic_frogo_email)
-                .setGroup(GROUP_KEY_EMAILS)
-                .setGroupSummary(true)
-                .setContentIntent(pendingIntent)
-                .setStyle(inboxStyle)
-                .setAutoCancel(true)
-        }
-        /*
-        Untuk android Oreo ke atas perlu menambahkan notification channel
-        Materi ini akan dibahas lebih lanjut di modul extended
-         */
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                .setGroupSummary()
+                .setupInboxStyle(object : IFNInboxStyle{
+                    override fun addLine1(): String { return "New Email from " + stackNotif[idNotification].sender }
+                    override fun addLine2(): String { return "New Email from " + stackNotif[idNotification - 1].sender }
+                    override fun setBigContentTitle(): String { return "$idNotification new emails" }
+                    override fun setSummaryText(): String { return "mail@frogobox" }
+                })
 
-            /* Create or update. */
-            val channel = NotificationChannel(CHANNEL_ID,
-                CHANNEL_NAME,
-                NotificationManager.IMPORTANCE_DEFAULT)
-
-            mBuilder.setChannelId(CHANNEL_ID)
-
-            mNotificationManager.createNotificationChannel(channel)
         }
 
-        val notification = mBuilder.build()
+        frogoNotification
+            .build()
+            .launch(idNotification)
 
-        mNotificationManager.notify(idNotification, notification)
     }
 
 }

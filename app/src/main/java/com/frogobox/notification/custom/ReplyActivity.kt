@@ -56,7 +56,6 @@ class ReplyActivity : AppCompatActivity() {
     private fun updateNotification(notifyId: Int) {
 
         FrogoNotification.Inject(this)
-            .setNotificationId(notifyId)
             .setChannelId(CHANNEL_ID)
             .setChannelName(CHANNEL_NAME as String)
             .setSmallIcon(R.drawable.ic_frogo_notif)
@@ -64,7 +63,7 @@ class ReplyActivity : AppCompatActivity() {
             .setContentText(getString(R.string.notif_content_sent))
             .setupWithVibration()
             .build()
-            .launch()
+            .launch(notifyId)
 
     }
 }
