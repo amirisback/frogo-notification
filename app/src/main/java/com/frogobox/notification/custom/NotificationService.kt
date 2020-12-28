@@ -44,13 +44,30 @@ class NotificationService : IntentService("NotificationService") {
             .setContentTitle(getString(R.string.notif_title))
             .setContentText(getString(R.string.notif_content))
             .showWhen(true)
-            .setupActionRemoteInput(object : IFNActionRemoteInput{
-                override fun setRemoteInputResultKey(): String { return KEY_REPLY }
-                override fun setRemoteInputLabel(): String { return getString(R.string.notif_action_reply) }
-                override fun setActionIcon(): Int { return R.drawable.ic_frogo_send }
-                override fun setActionTitle(): String { return getString(R.string.notif_action_reply) }
-                override fun setActionIntent(): PendingIntent? { return getReplyPendingIntent() }
-                override fun setAllowGeneratedReplies(): Boolean { return true }
+            .setupActionRemoteInput(object : IFNActionRemoteInput {
+                override fun setRemoteInputResultKey(): String {
+                    return KEY_REPLY
+                }
+
+                override fun setRemoteInputLabel(): String {
+                    return getString(R.string.notif_action_reply)
+                }
+
+                override fun setActionIcon(): Int {
+                    return R.drawable.ic_frogo_send
+                }
+
+                override fun setActionTitle(): String {
+                    return getString(R.string.notif_action_reply)
+                }
+
+                override fun setActionIntent(): PendingIntent? {
+                    return getReplyPendingIntent()
+                }
+
+                override fun setAllowGeneratedReplies(): Boolean {
+                    return true
+                }
             })
             .build()
             .launch(mNotificationId)

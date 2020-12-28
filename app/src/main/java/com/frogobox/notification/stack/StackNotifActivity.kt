@@ -35,7 +35,8 @@ class StackNotifActivity : AppCompatActivity() {
             val sender = binding.edtSender.text.toString()
             val message = binding.edtMessage.text.toString()
             if (sender.isEmpty() || message.isEmpty()) {
-                Toast.makeText(this@StackNotifActivity, "Data harus diisi", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@StackNotifActivity, "Data harus diisi", Toast.LENGTH_SHORT)
+                    .show()
             } else {
                 stackNotif.add(NotificationItem(idNotification, sender, message))
                 sendNotif()
@@ -44,7 +45,8 @@ class StackNotifActivity : AppCompatActivity() {
                 binding.edtMessage.setText("")
 
                 //tutup keyboard ketika tombol diklik
-                val methodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                val methodManager =
+                    getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 methodManager.hideSoftInputFromWindow(binding.edtMessage.windowToken, 0)
             }
         }
@@ -59,8 +61,13 @@ class StackNotifActivity : AppCompatActivity() {
     private fun sendNotif() {
         val intent = Intent(this, StackNotifActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-        val pendingIntent = PendingIntent.getActivity(this, NOTIFICATION_REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT)
-        
+        val pendingIntent = PendingIntent.getActivity(
+            this,
+            NOTIFICATION_REQUEST_CODE,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
         val frogoNotification = FrogoNotification.Inject(this)
             .setChannelId(CHANNEL_ID)
             .setChannelName(CHANNEL_NAME)
@@ -68,8 +75,8 @@ class StackNotifActivity : AppCompatActivity() {
             .setGroup(GROUP_KEY_EMAILS)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
-        
-        //Melakukan pengecekan jika idNotification lebih kecil dari Max Notif
+
+        // Check if NotificationID is smaller than Max Notif
         if (idNotification < MAX_NOTIFICATION) {
 
             stackNotif[idNotification].message?.let {
@@ -85,11 +92,22 @@ class StackNotifActivity : AppCompatActivity() {
                 .setContentTitle("$idNotification new emails")
                 .setContentText("mail@frogobox.com")
                 .setGroupSummary()
-                .setupInboxStyle(object : IFNInboxStyle{
-                    override fun addLine1(): String { return "New Email from " + stackNotif[idNotification].sender }
-                    override fun addLine2(): String { return "New Email from " + stackNotif[idNotification - 1].sender }
-                    override fun setBigContentTitle(): String { return "$idNotification new emails" }
-                    override fun setSummaryText(): String { return "mail@frogobox" }
+                .setupInboxStyle(object : IFNInboxStyle {
+                    override fun addLine1(): String {
+                        return "New Email from " + stackNotif[idNotification].sender
+                    }
+
+                    override fun addLine2(): String {
+                        return "New Email from " + stackNotif[idNotification - 1].sender
+                    }
+
+                    override fun setBigContentTitle(): String {
+                        return "$idNotification new emails"
+                    }
+
+                    override fun setSummaryText(): String {
+                        return "mail@frogobox"
+                    }
                 })
 
         }

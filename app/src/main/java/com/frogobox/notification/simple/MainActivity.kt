@@ -30,18 +30,18 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/amirisback"))
         val pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
 
-        FrogoNotification.Inject(this)
-            .setChannelId(CHANNEL_ID)
-            .setChannelName(CHANNEL_NAME)
-            .setContentIntent(pendingIntent)
-            .setSmallIcon(R.drawable.ic_frogo_notif)
-            .setLargeIcon(R.drawable.ic_frogo_notif)
-            .setContentTitle(resources.getString(R.string.content_title))
-            .setContentText(resources.getString(R.string.content_text))
-            .setSubText(resources.getString(R.string.subtext))
-            .setAutoCancel(true)
-            .build()
-            .launch(NOTIFICATION_ID)
+        FrogoNotification.Inject(this) // Intialize for Context
+            .setChannelId(CHANNEL_ID) // Intialize for Channel ID
+            .setChannelName(CHANNEL_NAME) // Initialize for Channel Name
+            .setContentIntent(pendingIntent) // Initialize for Content Intent
+            .setSmallIcon(R.drawable.ic_frogo_notif) // Initialize for Small Icon
+            .setLargeIcon(R.drawable.ic_frogo_notif) // Initialize for Large Icon
+            .setContentTitle(resources.getString(R.string.content_title)) // Initialize for Content Title
+            .setContentText(resources.getString(R.string.content_text)) // Initialize for Content Text
+            .setSubText(resources.getString(R.string.subtext)) // Initialize for Sub Text
+            .setAutoCancel(true) // Initialize for Auto Cancel
+            .build() // Build the Frogo Notification
+            .launch(NOTIFICATION_ID) // Notify the Frogo Notification
 
     }
 
