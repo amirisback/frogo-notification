@@ -57,7 +57,7 @@ class FrogoNotification {
         }
 
         fun setNotificationId(notificationId: Int) : Inject {
-            this.notification_id = notification_id
+            this.notification_id = notificationId
             return this
         }
 
@@ -104,18 +104,6 @@ class FrogoNotification {
         fun setAutoCancel(autoCancel: Boolean): Inject {
             this.autoCancel = autoCancel
             return this
-        }
-
-        fun getNotificationManager() : NotificationManager {
-            return notificationManager
-        }
-
-        fun getNotificationId() : Int {
-            return notification_id
-        }
-
-        fun getNotification() : Notification {
-            return notification
         }
 
         fun build(): Inject {

@@ -1,17 +1,11 @@
 package com.frogobox.notification
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
 import android.app.PendingIntent
-import android.content.Context
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.net.Uri
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.core.app.NotificationCompat
 import com.frogobox.frogonotification.FrogoNotification
 import com.frogobox.notification.custom.CustomNotifActivity
 import com.frogobox.notification.stack.StackNotifActivity
