@@ -1,16 +1,13 @@
 package com.frogobox.notification.custom
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
-import androidx.core.app.NotificationCompat
+import com.frogobox.frogonotification.FrogoNotification
 import com.frogobox.notification.R
 import com.frogobox.notification.custom.NotificationService.Companion.CHANNEL_ID
 import com.frogobox.notification.custom.NotificationService.Companion.CHANNEL_NAME
@@ -29,6 +26,7 @@ class ReplyActivity : AppCompatActivity() {
             return intent
         }
     }
+
     private var mMessageId: Int = 0
     private var mNotifyId: Int = 0
 
@@ -43,7 +41,7 @@ class ReplyActivity : AppCompatActivity() {
             mMessageId = intent.getIntExtra(KEY_MESSAGE_ID, 0)
             mNotifyId = intent.getIntExtra(KEY_NOTIFY_ID, 0)
         }
-        mEditReply = findViewById<EditText>(R.id.edit_reply)
+        mEditReply = findViewById(R.id.edit_reply)
         val sendButton = findViewById<ImageButton>(R.id.button_send)
         sendButton.setOnClickListener { sendMessage(mNotifyId, mMessageId) }
     }
@@ -51,31 +49,22 @@ class ReplyActivity : AppCompatActivity() {
     private fun sendMessage(notifyId: Int, messageId: Int) {
         updateNotification(notifyId)
         val message = mEditReply.text.toString().trim { it <= ' ' }
-        Toast.makeText(this, "Message ID: $messageId\nMessage: $message",
-            Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Message ID: $messageId\nMessage: $message", Toast.LENGTH_SHORT).show()
         finish()
     }
+
     private fun updateNotification(notifyId: Int) {
-        val notificationManagerCompat = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
+
+        FrogoNotification.Inject(this)
+            .setNotificationId(notifyId)
+            .setChannelId(CHANNEL_ID)
+            .setChannelName(CHANNEL_NAME as String)
             .setSmallIcon(R.drawable.ic_frogo_notif)
             .setContentTitle(getString(R.string.notif_title_sent))
             .setContentText(getString(R.string.notif_content_sent))
-        /*
-        Untuk android Oreo ke atas perlu menambahkan notification channel
-        Materi ini akan dibahas lebih lanjut di modul extended
-         */
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            /* Create or update. */
-            val channel = NotificationChannel(CHANNEL_ID,
-                CHANNEL_NAME,
-                NotificationManager.IMPORTANCE_DEFAULT)
-            channel.enableVibration(true)
-            channel.vibrationPattern = longArrayOf(1000, 1000, 1000, 1000, 1000)
-            builder.setChannelId(CHANNEL_ID)
-            notificationManagerCompat.createNotificationChannel(channel)
-        }
-        val notification = builder.build()
-        notificationManagerCompat.notify(notifyId, notification)
+            .setupWithVibration()
+            .build()
+            .launch()
+
     }
 }

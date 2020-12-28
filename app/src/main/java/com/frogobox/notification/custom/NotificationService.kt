@@ -1,14 +1,12 @@
 package com.frogobox.notification.custom
 
 import android.app.IntentService
-import android.app.NotificationChannel
-import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Intent
-import android.content.Context
 import android.os.Build
-import androidx.core.app.NotificationCompat
 import androidx.core.app.RemoteInput
+import com.frogobox.frogonotification.FrogoNotification
+import com.frogobox.frogonotification.attr.IFrogoActionRemoteInput
 import com.frogobox.notification.R
 
 
@@ -39,48 +37,25 @@ class NotificationService : IntentService("NotificationService") {
         mNotificationId = 1
         mMessageId = 123
 
-        // Tambahkan channel id, channel name , dan tingkat importance
-
-        val replyLabel = getString(R.string.notif_action_reply)
-        val remoteInput = RemoteInput.Builder(KEY_REPLY)
-            .setLabel(replyLabel)
-            .build()
-
-        val replyAction = NotificationCompat.Action.Builder(
-            R.drawable.ic_frogo_send, replyLabel, getReplyPendingIntent())
-            .addRemoteInput(remoteInput)
-            .setAllowGeneratedReplies(true)
-            .build()
-
-        val mBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
+        FrogoNotification.Inject(this)
+            .setNotificationId(mNotificationId)
+            .setChannelId(CHANNEL_ID)
+            .setChannelName(CHANNEL_NAME as String)
             .setSmallIcon(R.drawable.ic_frogo_notif)
             .setContentTitle(getString(R.string.notif_title))
             .setContentText(getString(R.string.notif_content))
-            .setShowWhen(true)
-            .addAction(replyAction)
+            .showWhen(true)
+            .setupActionRemoteInput(object : IFrogoActionRemoteInput{
+                override fun setRemoteInputResultKey(): String { return KEY_REPLY }
+                override fun setRemoteInputLabel(): String { return getString(R.string.notif_action_reply) }
+                override fun setActionIcon(): Int { return R.drawable.ic_frogo_send }
+                override fun setActionTitle(): String { return getString(R.string.notif_action_reply) }
+                override fun setActionIntent(): PendingIntent? { return getReplyPendingIntent() }
+                override fun setAllowGeneratedReplies(): Boolean { return true }
+            })
+            .build()
+            .launch()
 
-        val mNotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
-        /*
-        Untuk android Oreo ke atas perlu menambahkan notification channel
-        Materi ini akan dibahas lebih lanjut di modul extended
-         */
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-
-            /* Create or update. */
-            val channel = NotificationChannel(
-                CHANNEL_ID,
-                CHANNEL_NAME,
-                NotificationManager.IMPORTANCE_DEFAULT)
-
-            mBuilder.setChannelId(CHANNEL_ID)
-
-            mNotificationManager.createNotificationChannel(channel)
-        }
-
-        val notification = mBuilder.build()
-
-        mNotificationManager.notify(mNotificationId, notification)
     }
 
     private fun getReplyPendingIntent(): PendingIntent {
@@ -91,7 +66,12 @@ class NotificationService : IntentService("NotificationService") {
                 mNotificationId,
                 mMessageId
             )
-            PendingIntent.getBroadcast(applicationContext, 100, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+            PendingIntent.getBroadcast(
+                applicationContext,
+                100,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+            )
         } else {
             intent = ReplyActivity.getReplyMessageIntent(this, mNotificationId, mMessageId)
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
