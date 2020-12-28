@@ -47,13 +47,13 @@ class NotificationService : IntentService("NotificationService") {
             .build()
 
         val replyAction = NotificationCompat.Action.Builder(
-            R.drawable.ic_send, replyLabel, getReplyPendingIntent())
+            R.drawable.ic_frogo_send, replyLabel, getReplyPendingIntent())
             .addRemoteInput(remoteInput)
             .setAllowGeneratedReplies(true)
             .build()
 
         val mBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_notifications)
+            .setSmallIcon(R.drawable.ic_frogo_notif)
             .setContentTitle(getString(R.string.notif_title))
             .setContentText(getString(R.string.notif_content))
             .setShowWhen(true)

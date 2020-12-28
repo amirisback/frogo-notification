@@ -11,6 +11,7 @@ import com.frogobox.notification.custom.CustomNotifActivity
 import com.frogobox.notification.stack.StackNotifActivity
 
 class MainActivity : AppCompatActivity() {
+
     companion object {
         private const val NOTIFICATION_ID = 1
         private const val CHANNEL_ID = "channel_01"
@@ -33,8 +34,8 @@ class MainActivity : AppCompatActivity() {
             .setChannelName(CHANNEL_NAME)
             .setResoures(resources)
             .setContentIntent(pendingIntent)
-            .setSmallIcon(R.drawable.ic_notifications)
-            .setLargeIcon(R.drawable.ic_notifications)
+            .setSmallIcon(R.drawable.ic_frogo_notif)
+            .setLargeIcon(R.drawable.ic_frogo_notif)
             .setContentTitle(resources.getString(R.string.content_title))
             .setContentText(resources.getString(R.string.content_text))
             .setSubText(resources.getString(R.string.subtext))

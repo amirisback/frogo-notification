@@ -45,7 +45,7 @@ class NotificationBroadcastReceiver : BroadcastReceiver() {
         val mNotificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         val mBuilder = NotificationCompat.Builder(context, CHANNEL_ID)
-            .setSmallIcon(R.drawable.ic_notifications)
+            .setSmallIcon(R.drawable.ic_frogo_notif)
             .setContentTitle(context.getString(R.string.notif_title_sent))
             .setContentText(context.getString(R.string.notif_content_sent))
 
