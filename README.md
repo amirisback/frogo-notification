@@ -1,4 +1,5 @@
-# Frogo Notification Helper (work-in-progress 👷🔧️👷‍♀️⛏)
+# Frogo Notification (work-in-progress 👷🔧️👷‍♀️⛏)
+Beta Release
 
 # About This Project
 SDK for anything your problem to make easier developing android apps
@@ -7,11 +8,12 @@ frogo-notification is under huge large development
 # Version Release
 This Is Latest Release
 
-    $version_release = development
+    $version_release = 1.0.0
 
 What's New??
 
-    * Development *
+    * Notification with singleton method *
+    * Simple and eazy to use *
 
 # Download this project
 
@@ -30,8 +32,29 @@ What's New??
 
     dependencies {
             // library frogo-notification
-            implementation "Coming Soon"
+            implementation 'com.github.amirisback:frogo-notification:1.0.0'
     }
+
+### Step 3. Implement frogo-notification
+
+    val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/amirisback"))
+    val pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
+
+    val frogoNotification = FrogoNotification.Inject(this)
+        .setNotificationId(NOTIFICATION_ID)
+        .setChannelId(CHANNEL_ID)
+        .setChannelName(CHANNEL_NAME)
+        .setResoures(resources)
+        .setContentIntent(pendingIntent)
+        .setSmallIcon(R.drawable.ic_frogo_notif)
+        .setLargeIcon(R.drawable.ic_frogo_notif)
+        .setContentTitle(resources.getString(R.string.content_title))
+        .setContentText(resources.getString(R.string.content_text))
+        .setSubText(resources.getString(R.string.subtext))
+        .setAutoCancel(true)
+        .build()
+
+    frogoNotification.launch() // notify (show the notification)
 
 # Colaborator
 Very open to anyone, I'll write your name under this, please contribute by sending an email to me

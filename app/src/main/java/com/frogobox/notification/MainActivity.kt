@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     companion object {
         private const val NOTIFICATION_ID = 1
         private const val CHANNEL_ID = "channel_01"
-        private const val CHANNEL_NAME = "dicoding channel"
+        private const val CHANNEL_NAME = "amir channel"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     //aksi untuk onClick pada button
     fun sendNotification(view: View) {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://dicoding.com"))
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/amirisback"))
         val pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
 
         val frogoNotification = FrogoNotification.Inject(this)
