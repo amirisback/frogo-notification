@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.core.app.NotificationCompat
+import com.frogobox.frogonotification.FrogoNotification
 import com.frogobox.notification.custom.CustomNotifActivity
 import com.frogobox.notification.stack.StackNotifActivity
 
@@ -31,40 +32,23 @@ class MainActivity : AppCompatActivity() {
     fun sendNotification(view: View) {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://dicoding.com"))
         val pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
-        val mNotificationManager =
-            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val mBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
+
+        val frogoNotification = FrogoNotification.Inject(this)
+            .setNotificationId(NOTIFICATION_ID)
+            .setChannelId(CHANNEL_ID)
+            .setChannelName(CHANNEL_NAME)
+            .setResoures(resources)
             .setContentIntent(pendingIntent)
-            .setSmallIcon(R.drawable.ic_baseline_notifications_48px)
-            .setLargeIcon(
-                BitmapFactory.decodeResource(
-                    resources,
-                    R.drawable.ic_baseline_notifications_48px
-                )
-            )
+            .setSmallIcon(R.drawable.ic_notifications)
+            .setLargeIcon(R.drawable.ic_notifications)
             .setContentTitle(resources.getString(R.string.content_title))
             .setContentText(resources.getString(R.string.content_text))
             .setSubText(resources.getString(R.string.subtext))
             .setAutoCancel(true)
+            .build()
 
-        /*
-        Untuk android Oreo ke atas perlu menambahkan notification channel
-        */
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            /* Create or update. */
-            val channel = NotificationChannel(
-                CHANNEL_ID,
-                CHANNEL_NAME,
-                NotificationManager.IMPORTANCE_DEFAULT
-            )
-            channel.description = CHANNEL_NAME
-            mBuilder.setChannelId(CHANNEL_ID)
-            mNotificationManager.createNotificationChannel(channel)
-        }
+        frogoNotification.launch()
 
-        val notification = mBuilder.build()
-
-        mNotificationManager.notify(NOTIFICATION_ID, notification)
     }
 
     fun intentToCustom(view: View) {
