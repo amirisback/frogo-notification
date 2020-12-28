@@ -1,5 +1,4 @@
-# Frogo Notification (work-in-progress 👷🔧️👷‍♀️⛏)
-Beta Release
+![ScreenShoot Apps](docs/image/ss_banner.png?raw=true)
 
 # About This Project
 SDK for anything your problem to make easier developing android apps
