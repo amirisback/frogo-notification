@@ -7,7 +7,7 @@ frogo-notification is under huge large development
 # Screenshoot Library Sample
 Simple Notification |   Custom Notification |   Stack Notificationn |
 :------------------:|:---------------------:|:---------------------:|
-<span align="center"><img width="200px" height="360px" src="docs/image/simple_notif.gif"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/custom_notif.gif"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/stack_notfi.gif"></span> |
+<span align="center"><img width="200px" height="360px" src="docs/image/simple_notif.gif"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/custom_notif.gif"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/stack_notif.gif"></span> |
 
 
 # Version Release
