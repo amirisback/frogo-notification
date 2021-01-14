@@ -1,11 +1,16 @@
 ![ScreenShoot Apps](docs/image/ss_banner.png?raw=true)
 
 # About This Project
-SDK for your notification problem to make easier developing android apps
-frogo-notification is under huge large development
+[![JitPack](https://jitpack.io/v/amirisback/frogo-notification.svg?style=flat-square)](https://jitpack.io/#amirisback/frogo-notification)
+- SDK for your notification problem to make easier developing android apps
+- frogo-notification is under huge large development
+- Notification with singleton method
+- Simple and eazy to use
+- With many feature
+- Full documentation
 
 # Screenshoot Library Sample
-Simple Notification |   Custom Notification |   Stack Notificationn |
+Simple Notification |   Custom Notification |   Stack Notification |
 :------------------:|:---------------------:|:---------------------:|
 <span align="center"><img width="200px" height="360px" src="docs/image/simple_notif.gif"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/custom_notif.gif"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/stack_notif.gif"></span> |
 
@@ -13,14 +18,12 @@ Simple Notification |   Custom Notification |   Stack Notificationn |
 # Version Release
 This Is Latest Release
 
-    $version_release = 1.0.2
+    $version_release = 1.0.3
 
 What's New??
 
-    * Notification with singleton method *
-    * Simple and eazy to use *
-    * With many feature *
-    * Full documentation *
+    * Bug Fixed *
+    * Enhance Performance *
 
 # Download this project
 
@@ -39,7 +42,7 @@ What's New??
 
     dependencies {
             // library frogo-notification
-            implementation 'com.github.amirisback:frogo-notification:1.0.2'
+            implementation 'com.github.amirisback:frogo-notification:1.0.3'
     }
 
 ### Step 3. Implement frogo-notification (Simple Notification)
