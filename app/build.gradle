@@ -25,7 +25,7 @@ android {
     def nameAPK = nameAppLower.replace(" ", "-")
 
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId projectApplicationId
