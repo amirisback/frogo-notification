@@ -18,12 +18,13 @@ Simple Notification |   Custom Notification |   Stack Notification |
 # Version Release
 This Is Latest Release
 
-    $version_release = 1.0.3
+    $version_release = 1.0.4
 
 What's New??
 
     * Bug Fixed *
     * Enhance Performance *
+    * Update : build.gradle latest version *
 
 # Download this project
 
@@ -42,7 +43,7 @@ What's New??
 
     dependencies {
             // library frogo-notification
-            implementation 'com.github.amirisback:frogo-notification:1.0.3'
+            implementation 'com.github.amirisback:frogo-notification:1.0.4'
     }
 
 ### Step 3. Implement frogo-notification (Simple Notification)
