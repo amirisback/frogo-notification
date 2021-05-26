@@ -1,6 +1,6 @@
 ![ScreenShoot Apps](docs/image/ss_banner.png?raw=true)
 
-# About This Project
+## About This Project
 [![JitPack](https://jitpack.io/v/amirisback/frogo-notification.svg?style=flat-square)](https://jitpack.io/#amirisback/frogo-notification)
 - SDK for your notification problem to make easier developing android apps
 - frogo-notification is under huge large development
@@ -9,13 +9,13 @@
 - With many feature
 - Full documentation
 
-# Screenshoot Library Sample
+## Screenshoot Library Sample
 Simple Notification |   Custom Notification |   Stack Notification |
 :------------------:|:---------------------:|:---------------------:|
 <span align="center"><img width="200px" height="360px" src="docs/image/simple_notif.gif"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/custom_notif.gif"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/stack_notif.gif"></span> |
 
 
-# Version Release
+## Version Release
 This Is Latest Release
 
     $version_release = 1.0.4
@@ -26,7 +26,7 @@ What's New??
     * Enhance Performance *
     * Update : build.gradle latest version *
 
-# Download this project
+## Download this project
 
 ### Step 1. Add the JitPack repository to your build file (build.gradle : Project)
 
@@ -61,7 +61,7 @@ What's New??
         .build() // Build the Frogo Notification
         .launch(NOTIFICATION_ID) // Notify the Frogo Notification
 
-# Feature frogo-notification
+## Feature frogo-notification
 
 ### Simple Notification
 
@@ -182,7 +182,7 @@ What's New??
 - With Action Replay [Click Here](https://github.com/amirisback/frogo-notification/blob/master/app/src/main/java/com/frogobox/notification/custom/NotificationService.kt)
 - With Inbox Style (Stack) [Click Here](https://github.com/amirisback/frogo-notification/blob/master/app/src/main/java/com/frogobox/notification/stack/StackNotifActivity.kt)
 
-# Colaborator
+## Colaborator
 Very open to anyone, I'll write your name under this, please contribute by sending an email to me
 
 - Mail To faisalamircs@gmail.com
@@ -196,6 +196,6 @@ Name Of Contribute
 
 Waiting for your contribute
 
-# Attention !!!
+## Attention !!!
 - Please enjoy and don't forget fork and give a star
 - Don't Forget Follow My Github Account
