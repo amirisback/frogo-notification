@@ -18,7 +18,7 @@ Simple Notification |   Custom Notification |   Stack Notification |
 ## Version Release
 This Is Latest Release
 
-    $version_release = 1.0.4
+    $version_release = 1.0.5
 
 What's New??
 
@@ -43,7 +43,7 @@ What's New??
 
     dependencies {
             // library frogo-notification
-            implementation 'com.github.amirisback:frogo-notification:1.0.4'
+            implementation 'com.github.amirisback:frogo-notification:1.0.5'
     }
 
 ### Step 3. Implement frogo-notification (Simple Notification)
