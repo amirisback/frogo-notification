@@ -10,9 +10,9 @@
 - Full documentation
 
 ## Screenshoot Library Sample
-Simple Notification |   Custom Notification |   Stack Notification |
-:------------------:|:---------------------:|:---------------------:|
-<span align="center"><img width="200px" height="360px" src="docs/image/simple_notif.gif"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/custom_notif.gif"></span> | <span align="center"><img width="200px" height="360px" src="docs/image/stack_notif.gif"></span> |
+|Simple Notification |   Custom Notification |   Stack Notification  |
+|:------------------:|:---------------------:|:---------------------:|
+|<img width="200px" height="360px" src="docs/image/simple_notif.gif"> | <img width="200px" height="360px" src="docs/image/custom_notif.gif"> | <img width="200px" height="360px" src="docs/image/stack_notif.gif"> |
 
 
 ## Version Release
