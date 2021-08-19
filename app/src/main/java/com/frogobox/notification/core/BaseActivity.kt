@@ -1,6 +1,8 @@
 package com.frogobox.notification.core
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 
@@ -27,5 +29,25 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         binding = setupViewBinding()
         setContentView(binding.root)
     }
+
+    protected fun setupDetailActivity(title: String) {
+        supportActionBar?.title = title
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
 
 }

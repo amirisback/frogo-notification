@@ -13,7 +13,15 @@
         android:id="@+id/btn_send_notif"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/send_notif"
+        android:text="@string/send_notification"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/btn_show_expanded"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/send_custom_notification"
         android:textColor="@android:color/white"
         android:textSize="14sp" />
 
@@ -33,12 +41,5 @@
         android:textColor="@android:color/white"
         android:textSize="14sp" />
 
-    <Button
-        android:id="@+id/btn_show_expanded"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/show_expanded"
-        android:textColor="@android:color/white"
-        android:textSize="14sp" />
 
 </LinearLayout>

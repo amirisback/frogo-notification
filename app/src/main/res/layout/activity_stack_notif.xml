@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:ems="20"
-        android:hint="@string/hintSender"
+        android:hint="@string/hint_sender"
         android:textAlignment="center" />
 
     <EditText
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:ems="20"
-        android:hint="@string/hintMessage"
+        android:hint="@string/hint_message"
         android:textAlignment="center" />
 
     <Button
@@ -32,6 +32,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="16dp"
-        android:text="@string/sendNotif"
+        android:text="@string/send"
         android:textColor="@android:color/white" />
 </LinearLayout>

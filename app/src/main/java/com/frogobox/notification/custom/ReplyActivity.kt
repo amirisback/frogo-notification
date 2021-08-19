@@ -17,6 +17,7 @@ class ReplyActivity : BaseActivity<ActivityReplyBinding>() {
     companion object {
         private const val KEY_MESSAGE_ID = "key_message_id"
         private const val KEY_NOTIFY_ID = "key_notify_id"
+
         fun getReplyMessageIntent(context: Context, notifyId: Int, messageId: Int): Intent {
             val intent = Intent(context, ReplyActivity::class.java)
             intent.action = REPLY_ACTION
@@ -24,6 +25,7 @@ class ReplyActivity : BaseActivity<ActivityReplyBinding>() {
             intent.putExtra(KEY_NOTIFY_ID, notifyId)
             return intent
         }
+
     }
 
     private var mMessageId: Int = 0

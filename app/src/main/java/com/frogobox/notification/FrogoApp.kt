@@ -38,10 +38,7 @@ class FrogoApp : Application() {
                 CHANNEL_NAME,
                 NotificationManager.IMPORTANCE_HIGH
             )
-            val manager = getSystemService(
-                NotificationManager::class.java
-            )
-            manager.createNotificationChannel(channel)
+            getSystemService(NotificationManager::class.java).createNotificationChannel(channel)
         }
     }
 
