@@ -13,7 +13,7 @@ import com.frogobox.notification.FrogoApp
 import com.frogobox.notification.FrogoNotification
 import com.frogobox.notification.core.FrogoNotifInboxStyleListener
 import com.frogobox.notification.R
-import com.frogobox.notification.simple.ExpandReceiver
+import com.frogobox.notification.simple.MainReceiver
 import com.frogobox.notification.core.BaseActivity
 import com.frogobox.notification.databinding.ActivityStackNotifBinding
 
@@ -87,7 +87,7 @@ class StackNotifActivity : BaseActivity<ActivityStackNotifBinding>() {
             .setSmallIcon(R.drawable.ic_frogo_email)
             .setGroup(GROUP_KEY_EMAILS)
             .setContentIntent(pendingIntent)
-            .setAutoCancel(true)
+            .setupAutoCancel()
 
         // Check if NotificationID is smaller than Max Notif
         if (idNotification < MAX_NOTIFICATION) {
@@ -142,7 +142,7 @@ class StackNotifActivity : BaseActivity<ActivityStackNotifBinding>() {
             R.layout.notification_expanded
         )
 
-        val clickIntent = Intent(this, ExpandReceiver::class.java)
+        val clickIntent = Intent(this, MainReceiver::class.java)
 
         val clickPendingIntent = PendingIntent.getBroadcast(
             this,

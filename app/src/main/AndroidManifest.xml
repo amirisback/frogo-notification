@@ -10,13 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Notification">
-
-        <activity android:name=".stack.StackNotifActivity" />
-        <activity android:name=".custom.ReplyActivity" />
-        <activity android:name=".custom.CustomNotifActivity" />
-
         <activity
-            android:name=".simple.MainActivity"
+            android:name=".simple.ManualActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,13 +19,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".stack.StackNotifActivity" />
+        <activity android:name=".custom.ReplyActivity" />
+        <activity android:name=".custom.CustomNotifActivity" />
+        <activity
+            android:name=".simple.MainActivity"
+            android:exported="true">
+
+        </activity>
 
         <receiver
             android:name=".custom.NotificationBroadcastReceiver"
             android:enabled="true"
             android:exported="false" />
 
-        <receiver android:name=".simple.ExpandReceiver" />
+        <receiver android:name=".simple.MainReceiver" />
 
         <service
             android:name=".custom.NotificationService"

@@ -3,6 +3,7 @@ package com.frogobox.notification
 import android.app.PendingIntent
 import androidx.core.app.NotificationCompat
 import com.frogobox.notification.core.FrogoNotifActionRemoteInputListener
+import com.frogobox.notification.core.FrogoNotifCustomContentViewListener
 import com.frogobox.notification.core.FrogoNotifInboxStyleListener
 
 /*
@@ -44,13 +45,13 @@ interface IFrogoNotification {
     fun setSubText(contentSubText: CharSequence): FrogoNotification.Inject
 
     // Initialize for Auto Cancel
-    fun setAutoCancel(autoCancel: Boolean): FrogoNotification.Inject
+    fun setupAutoCancel(): FrogoNotification.Inject
 
     // Initialize for Style
     fun setStyle(style: NotificationCompat.Style): FrogoNotification.Inject
 
     // Initialize for Show When
-    fun showWhen(show: Boolean): FrogoNotification.Inject
+    fun setupShowWhen(): FrogoNotification.Inject
 
     // Initialize for Group
     fun setGroup(groupKey: String): FrogoNotification.Inject
@@ -66,6 +67,12 @@ interface IFrogoNotification {
 
     // Setup Inbox Style (For Stack Notification)
     fun setupInboxStyle(listener: FrogoNotifInboxStyleListener): FrogoNotification.Inject
+
+    // Setup Custom Content View
+    fun setCustomContentView(listener: FrogoNotifCustomContentViewListener): FrogoNotification.Inject
+
+    // Setup Big Custom Content View
+    fun setCustomBigContentView(listener: FrogoNotifCustomContentViewListener): FrogoNotification.Inject
 
     // Setup Frogo Simple Style Notification
     fun setupWithFrogoStyle(): FrogoNotification.Inject

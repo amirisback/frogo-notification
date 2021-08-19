@@ -43,7 +43,7 @@ class NotificationService : IntentService("NotificationService") {
             .setSmallIcon(R.drawable.ic_frogo_notif)
             .setContentTitle(getString(R.string.notif_title))
             .setContentText(getString(R.string.notif_content))
-            .showWhen(true)
+            .setupShowWhen()
             .setupActionRemoteInput(object : FrogoNotifActionRemoteInputListener {
                 override fun setRemoteInputResultKey(): String {
                     return KEY_REPLY

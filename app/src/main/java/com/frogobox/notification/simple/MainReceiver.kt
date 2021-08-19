@@ -19,7 +19,7 @@ import androidx.core.app.NotificationManagerCompat
  *
  */
 
-class ExpandReceiver : BroadcastReceiver() {
+class MainReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         Toast.makeText(context, "Image clicked", Toast.LENGTH_SHORT).show()

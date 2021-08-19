@@ -1,5 +1,8 @@
 package com.frogobox.notification.core
 
+import android.content.Context
+import android.widget.RemoteViews
+
 /*
  * Created by faisalamir on 19/08/21
  * FrogoNotification
@@ -12,5 +15,10 @@ package com.frogobox.notification.core
  * All rights reserved
  *
  */
-interface FrogoNotifCollapsedViewListener {
+interface FrogoNotifCustomContentViewListener {
+
+    fun setupCustomView() : Int
+
+    fun setupComponent(context: Context, customView: RemoteViews)
+
 }

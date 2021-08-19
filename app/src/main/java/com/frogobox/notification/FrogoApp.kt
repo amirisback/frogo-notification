@@ -21,7 +21,9 @@ import android.app.NotificationManager
 class FrogoApp : Application() {
 
     companion object {
-        const val CHANNEL_ID = "exampleChannel"
+        const val NOTIFICATION_ID = 2
+        const val CHANNEL_ID = "CHANNEL_$NOTIFICATION_ID"
+        const val CHANNEL_NAME = "CHANNEL_NAME_$CHANNEL_ID"
     }
 
     override fun onCreate() {
@@ -33,7 +35,7 @@ class FrogoApp : Application() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
                 CHANNEL_ID,
-                "Example Channel",
+                CHANNEL_NAME,
                 NotificationManager.IMPORTANCE_HIGH
             )
             val manager = getSystemService(
