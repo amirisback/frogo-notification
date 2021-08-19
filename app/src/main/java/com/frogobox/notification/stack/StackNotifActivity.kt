@@ -5,10 +5,15 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
+import android.widget.RemoteViews
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import com.frogobox.notification.FrogoApp
 import com.frogobox.notification.FrogoNotification
 import com.frogobox.notification.attr.IFNInboxStyle
 import com.frogobox.notification.R
+import com.frogobox.notification.simple.ExpandReceiver
 import com.frogobox.notification.core.BaseActivity
 import com.frogobox.notification.databinding.ActivityStackNotifBinding
 
@@ -23,6 +28,11 @@ class StackNotifActivity : BaseActivity<ActivityStackNotifBinding>() {
     }
 
     private var idNotification = 0
+
+    private val notificationManager: NotificationManagerCompat by lazy {
+        NotificationManagerCompat.from(this)
+    }
+
     private val stackNotif = ArrayList<NotificationItem>()
 
     override fun setupViewBinding(): ActivityStackNotifBinding {
@@ -118,6 +128,42 @@ class StackNotifActivity : BaseActivity<ActivityStackNotifBinding>() {
         frogoNotification
             .build()
             .launch(idNotification)
+
+    }
+
+
+    private fun showNotification() {
+        val collapsedView = RemoteViews(
+            packageName,
+            R.layout.notification_collapsed
+        )
+        val expandedView = RemoteViews(
+            packageName,
+            R.layout.notification_expanded
+        )
+
+        val clickIntent = Intent(this, ExpandReceiver::class.java)
+
+        val clickPendingIntent = PendingIntent.getBroadcast(
+            this,
+            0, clickIntent, 0
+        )
+
+        collapsedView.setTextViewText(R.id.text_view_collapsed_1, "Hello World!")
+
+        expandedView.setImageViewResource(
+            R.id.image_view_expanded,
+            R.drawable.ic_launcher_foreground
+        )
+
+        expandedView.setOnClickPendingIntent(R.id.image_view_expanded, clickPendingIntent)
+
+        val notification = NotificationCompat.Builder(this, FrogoApp.CHANNEL_ID)
+            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setCustomContentView(collapsedView)
+            .setCustomBigContentView(expandedView) //.setStyle(new NotificationCompat.DecoratedCustomViewStyle())
+            .build()
+        notificationManager.notify(1, notification)
 
     }
 

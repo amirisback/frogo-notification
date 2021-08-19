@@ -3,35 +3,39 @@
     package="com.frogobox.notification">
 
     <application
+        android:name=".FrogoApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Notification">
-        <activity
-            android:name=".codinginflow.CodingInFlowActivity"
-            android:exported="true" />
+
         <activity android:name=".stack.StackNotifActivity" />
-
-        <receiver
-            android:name=".custom.NotificationBroadcastReceiver"
-            android:enabled="true"
-            android:exported="false" />
-
-        <service
-            android:name=".custom.NotificationService"
-            android:exported="false" />
-
         <activity android:name=".custom.ReplyActivity" />
         <activity android:name=".custom.CustomNotifActivity" />
-        <activity android:name=".simple.MainActivity">
+
+        <activity
+            android:name=".simple.MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver
+            android:name=".custom.NotificationBroadcastReceiver"
+            android:enabled="true"
+            android:exported="false" />
+
+        <receiver android:name=".simple.ExpandReceiver" />
+
+        <service
+            android:name=".custom.NotificationService"
+            android:exported="false" />
+
     </application>
 
 </manifest>

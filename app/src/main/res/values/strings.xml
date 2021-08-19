@@ -14,6 +14,7 @@
     <string name="hintSender">Masukkan nama sender</string>
     <string name="hintMessage">Masukkan message</string>
     <string name="sendNotif">Kirim</string>
-    <string name="navigate_custom">go to custom notif</string>
-    <string name="navigate_stack">go to stack notif</string>
+    <string name="navigate_custom">Go to custom notif</string>
+    <string name="navigate_stack">Go to stack notif</string>
+    <string name="show_expanded">Show Expanded</string>
 </resources>

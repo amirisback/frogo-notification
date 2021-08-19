@@ -1,52 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".simple.MainActivity">
 
     <Button
         android:id="@+id/btn_send_notif"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_gravity="center"
         android:text="@string/send_notif"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toTopOf="@+id/btn_custom_notif"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="14sp" />
 
     <Button
         android:id="@+id/btn_custom_notif"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_send_notif"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
         android:text="@string/navigate_custom"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="14sp" />
 
     <Button
         android:id="@+id/btn_stack_notif"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_custom_notif"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
         android:text="@string/navigate_stack"
         android:textColor="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_custom_notif" />
+        android:textSize="14sp" />
 
+    <Button
+        android:id="@+id/btn_show_expanded"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/show_expanded"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
