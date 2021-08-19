@@ -1,4 +1,4 @@
-package com.frogobox.notification
+package com.frogobox.appnotif
 
 import android.app.Application
 import android.os.Build

@@ -1,4 +1,4 @@
-package com.frogobox.notification.simple
+package com.frogobox.appnotif.simple
 
 import android.content.BroadcastReceiver
 import android.content.Context

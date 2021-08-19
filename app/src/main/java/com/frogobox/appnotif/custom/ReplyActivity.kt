@@ -1,16 +1,16 @@
-package com.frogobox.notification.custom
+package com.frogobox.appnotif.custom
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import com.frogobox.notification.FrogoNotification
-import com.frogobox.notification.R
-import com.frogobox.notification.core.BaseActivity
-import com.frogobox.notification.custom.NotificationService.Companion.CHANNEL_ID
-import com.frogobox.notification.custom.NotificationService.Companion.CHANNEL_NAME
-import com.frogobox.notification.custom.NotificationService.Companion.REPLY_ACTION
-import com.frogobox.notification.databinding.ActivityReplyBinding
+import com.frogobox.appnotif.R
+import com.frogobox.appnotif.core.BaseActivity
+import com.frogobox.appnotif.custom.NotificationService.Companion.CHANNEL_ID
+import com.frogobox.appnotif.custom.NotificationService.Companion.CHANNEL_NAME
+import com.frogobox.appnotif.custom.NotificationService.Companion.REPLY_ACTION
+import com.frogobox.appnotif.databinding.ActivityReplyBinding
 
 class ReplyActivity : BaseActivity<ActivityReplyBinding>() {
 

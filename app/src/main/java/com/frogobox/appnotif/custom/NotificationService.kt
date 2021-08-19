@@ -1,4 +1,4 @@
-package com.frogobox.notification.custom
+package com.frogobox.appnotif.custom
 
 import android.app.IntentService
 import android.app.PendingIntent
@@ -7,7 +7,7 @@ import android.os.Build
 import androidx.core.app.RemoteInput
 import com.frogobox.notification.FrogoNotification
 import com.frogobox.notification.core.FrogoNotifActionRemoteInputListener
-import com.frogobox.notification.R
+import com.frogobox.appnotif.R
 
 
 class NotificationService : IntentService("NotificationService") {

@@ -1,4 +1,4 @@
-package com.frogobox.notification.core
+package com.frogobox.appnotif.core
 
 import android.os.Bundle
 import android.view.Menu

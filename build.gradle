@@ -4,21 +4,23 @@ buildscript {
     ext {
 
         // project settings
-        def nameApp = "Frogo Notification"
+        nameApp = "Frogo Notification"
 
         def appDomain = "com"
         def appDevConsole = "frogobox"
-        def appName = "notification"
+        def appName = "appnotif"
+        def library = "notification"
 
         def versionMajor = 1
         def versionMinor = 0
-        def versionPatch = 6
+        def versionPatch = 7
 
         projectCompileSdk = 31
         projectMinSdk = 21
         projectTargetSdk = projectCompileSdk
 
         projectApplicationId = "$appDomain.$appDevConsole.$appName"
+        projectLibraryId = "$appDomain.$appDevConsole.$library"
         projectVersionCode = (versionMajor * 100) + (versionMinor * 10) + (versionPatch * 1)
         projectVersionName = "$versionMajor.$versionMinor.$versionPatch"
 
@@ -35,7 +37,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.0'
+        classpath 'com.android.tools.build:gradle:7.0.1'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong

@@ -1,4 +1,4 @@
-package com.frogobox.notification.simple
+package com.frogobox.appnotif.simple
 
 import android.app.PendingIntent
 import android.content.Context
@@ -6,15 +6,14 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import com.frogobox.notification.FrogoNotification
-import com.frogobox.notification.core.BaseActivity
-import com.frogobox.notification.custom.CustomNotifActivity
-import com.frogobox.notification.databinding.ActivityMainBinding
-import com.frogobox.notification.stack.StackNotifActivity
+import com.frogobox.appnotif.core.BaseActivity
+import com.frogobox.appnotif.custom.CustomNotifActivity
+import com.frogobox.appnotif.databinding.ActivityMainBinding
+import com.frogobox.appnotif.stack.StackNotifActivity
 
 import android.widget.RemoteViews
-import androidx.core.app.NotificationManagerCompat
-import com.frogobox.notification.FrogoApp
-import com.frogobox.notification.R
+import com.frogobox.appnotif.FrogoApp
+import com.frogobox.appnotif.R
 import com.frogobox.notification.core.FrogoNotifCustomContentViewListener
 
 

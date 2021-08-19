@@ -22,14 +22,14 @@
 ## Version Release
 This Is Latest Release
 
-    $version_release = 1.0.6
+    $version_release = 1.0.7
 
 What's New??
 
     * Bug Fixed *
     * Enhance Performance *
     * Update : build.gradle latest version *
-    * Update : Android Gradle Plugin 7.0.0 *
+    * Update : Android Gradle Plugin 7.0.1 *
     * Adding : Custom Layout Notification *
     * Solving Feature Request *
     * Solving Issue *
@@ -51,7 +51,7 @@ What's New??
 
     dependencies {
             // library frogo-notification
-            implementation 'com.github.amirisback:frogo-notification:1.0.6'
+            implementation 'com.github.amirisback:frogo-notification:1.0.7'
     }
 
 ### Step 3. Implement frogo-notification (Simple Notification)

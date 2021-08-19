@@ -1,4 +1,4 @@
-package com.frogobox.notification.stack
+package com.frogobox.appnotif.stack
 
 /*
  * Created by Faisal Amir on 27/12/2020

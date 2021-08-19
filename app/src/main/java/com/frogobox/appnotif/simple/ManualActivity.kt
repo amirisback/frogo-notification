@@ -1,15 +1,15 @@
-package com.frogobox.notification.simple
+package com.frogobox.appnotif.simple
 
 import android.os.Bundle
-import com.frogobox.notification.R
+import com.frogobox.appnotif.R
 import android.widget.RemoteViews
 import android.content.Intent
 import android.app.PendingIntent
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import com.frogobox.notification.FrogoApp
-import com.frogobox.notification.core.BaseActivity
-import com.frogobox.notification.databinding.ActivityManualBinding
+import com.frogobox.appnotif.FrogoApp
+import com.frogobox.appnotif.core.BaseActivity
+import com.frogobox.appnotif.databinding.ActivityManualBinding
 
 /*
  * Created by faisalamir on 19/08/21
