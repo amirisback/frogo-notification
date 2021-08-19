@@ -3,15 +3,15 @@ package com.frogobox.notification.simple
 import android.app.PendingIntent
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import com.frogobox.notification.FrogoNotification
 import com.frogobox.notification.R
+import com.frogobox.notification.core.BaseActivity
 import com.frogobox.notification.custom.CustomNotifActivity
+import com.frogobox.notification.databinding.ActivityMainBinding
 import com.frogobox.notification.stack.StackNotifActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     companion object {
         private const val NOTIFICATION_ID = 1
@@ -19,13 +19,32 @@ class MainActivity : AppCompatActivity() {
         private const val CHANNEL_NAME = "CHANNEL_NAME_$CHANNEL_ID"
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun setupViewBinding(): ActivityMainBinding {
+        return ActivityMainBinding.inflate(layoutInflater)
     }
 
-    //aksi untuk onClick pada button
-    fun sendNotification(view: View) {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        binding.apply {
+
+            btnSendNotif.setOnClickListener {
+                sendNotification()
+            }
+
+            btnCustomNotif.setOnClickListener {
+                intentToCustom()
+            }
+
+            btnStackNotif.setOnClickListener {
+                intentToStack()
+            }
+
+        }
+
+    }
+
+    private fun sendNotification() {
 
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/amirisback"))
         val pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
@@ -45,11 +64,12 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun intentToCustom(view: View) {
+    private fun intentToCustom() {
         startActivity(Intent(this, CustomNotifActivity::class.java))
     }
 
-    fun intentToStack(view: View) {
+    private fun intentToStack() {
         startActivity(Intent(this, StackNotifActivity::class.java))
     }
+
 }

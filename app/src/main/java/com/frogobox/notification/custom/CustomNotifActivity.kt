@@ -1,19 +1,23 @@
 package com.frogobox.notification.custom
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import com.frogobox.notification.R
+import com.frogobox.notification.core.BaseActivity
+import com.frogobox.notification.databinding.ActivityCustomNotifBinding
 
-class CustomNotifActivity : AppCompatActivity() {
+class CustomNotifActivity : BaseActivity<ActivityCustomNotifBinding>() {
+
+    override fun setupViewBinding(): ActivityCustomNotifBinding {
+        return ActivityCustomNotifBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_custom_notif)
-        val buttonNotif = findViewById<Button>(R.id.button_show_notification)
-        buttonNotif.setOnClickListener {
+        binding.buttonShowNotification.setOnClickListener {
             startService(Intent(this, NotificationService::class.java))
         }
+
     }
+
 }

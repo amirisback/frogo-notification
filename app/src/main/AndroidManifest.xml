@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Notification">
+        <activity
+            android:name=".codinginflow.CodingInFlowActivity"
+            android:exported="true" />
         <activity android:name=".stack.StackNotifActivity" />
 
         <receiver

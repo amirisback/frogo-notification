@@ -3,16 +3,16 @@ package com.frogobox.notification.stack
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.frogobox.notification.FrogoNotification
 import com.frogobox.notification.attr.IFNInboxStyle
 import com.frogobox.notification.R
+import com.frogobox.notification.core.BaseActivity
 import com.frogobox.notification.databinding.ActivityStackNotifBinding
 
-class StackNotifActivity : AppCompatActivity() {
+class StackNotifActivity : BaseActivity<ActivityStackNotifBinding>() {
 
     companion object {
         private const val CHANNEL_NAME = "frogobox_channel"
@@ -24,30 +24,33 @@ class StackNotifActivity : AppCompatActivity() {
 
     private var idNotification = 0
     private val stackNotif = ArrayList<NotificationItem>()
-    private lateinit var binding: ActivityStackNotifBinding
+
+    override fun setupViewBinding(): ActivityStackNotifBinding {
+        return ActivityStackNotifBinding.inflate(layoutInflater)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityStackNotifBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
-        binding.btnSend.setOnClickListener {
-            val sender = binding.edtSender.text.toString()
-            val message = binding.edtMessage.text.toString()
-            if (sender.isEmpty() || message.isEmpty()) {
-                Toast.makeText(this@StackNotifActivity, "Data harus diisi", Toast.LENGTH_SHORT)
-                    .show()
-            } else {
-                stackNotif.add(NotificationItem(idNotification, sender, message))
-                sendNotif()
-                idNotification++
-                binding.edtSender.setText("")
-                binding.edtMessage.setText("")
+        binding.apply {
+            btnSend.setOnClickListener {
+                val sender = edtSender.text.toString()
+                val message = edtMessage.text.toString()
+                if (sender.isEmpty() || message.isEmpty()) {
+                    Toast.makeText(this@StackNotifActivity, "Data harus diisi", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    stackNotif.add(NotificationItem(idNotification, sender, message))
+                    sendNotif()
+                    idNotification++
+                    edtSender.setText("")
+                    edtMessage.setText("")
 
-                //tutup keyboard ketika tombol diklik
-                val methodManager =
-                    getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                methodManager.hideSoftInputFromWindow(binding.edtMessage.windowToken, 0)
+                    //tutup keyboard ketika tombol diklik
+                    val methodManager =
+                        getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    methodManager.hideSoftInputFromWindow(edtMessage.windowToken, 0)
+                }
             }
         }
     }

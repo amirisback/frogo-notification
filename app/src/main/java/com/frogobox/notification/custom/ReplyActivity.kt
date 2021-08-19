@@ -2,18 +2,17 @@ package com.frogobox.notification.custom
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.Toast
 import com.frogobox.notification.FrogoNotification
 import com.frogobox.notification.R
+import com.frogobox.notification.core.BaseActivity
 import com.frogobox.notification.custom.NotificationService.Companion.CHANNEL_ID
 import com.frogobox.notification.custom.NotificationService.Companion.CHANNEL_NAME
 import com.frogobox.notification.custom.NotificationService.Companion.REPLY_ACTION
+import com.frogobox.notification.databinding.ActivityReplyBinding
 
-class ReplyActivity : AppCompatActivity() {
+class ReplyActivity : BaseActivity<ActivityReplyBinding>() {
 
     companion object {
         private const val KEY_MESSAGE_ID = "key_message_id"
@@ -30,25 +29,25 @@ class ReplyActivity : AppCompatActivity() {
     private var mMessageId: Int = 0
     private var mNotifyId: Int = 0
 
-    private lateinit var mEditReply: EditText
+    override fun setupViewBinding(): ActivityReplyBinding {
+        return ActivityReplyBinding.inflate(layoutInflater)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_reply)
 
         val intent = intent
         if (REPLY_ACTION == intent.action) {
             mMessageId = intent.getIntExtra(KEY_MESSAGE_ID, 0)
             mNotifyId = intent.getIntExtra(KEY_NOTIFY_ID, 0)
         }
-        mEditReply = findViewById(R.id.edit_reply)
-        val sendButton = findViewById<ImageButton>(R.id.button_send)
-        sendButton.setOnClickListener { sendMessage(mNotifyId, mMessageId) }
+
+        binding.buttonSend.setOnClickListener { sendMessage(mNotifyId, mMessageId) }
     }
 
     private fun sendMessage(notifyId: Int, messageId: Int) {
         updateNotification(notifyId)
-        val message = mEditReply.text.toString().trim { it <= ' ' }
+        val message = binding.editReply.text.toString().trim { it <= ' ' }
         Toast.makeText(this, "Message ID: $messageId\nMessage: $message", Toast.LENGTH_SHORT).show()
         finish()
     }
@@ -66,4 +65,5 @@ class ReplyActivity : AppCompatActivity() {
             .launch(notifyId)
 
     }
+
 }
