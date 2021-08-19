@@ -1,4 +1,4 @@
-package com.frogobox.frogonotification.attr
+package com.frogobox.notification.attr
 
 /*
  * Created by Faisal Amir on 28/12/2020

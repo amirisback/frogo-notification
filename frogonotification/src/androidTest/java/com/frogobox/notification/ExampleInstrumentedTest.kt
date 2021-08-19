@@ -1,4 +1,4 @@
-package com.frogobox.frogonotification
+package com.frogobox.notification
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

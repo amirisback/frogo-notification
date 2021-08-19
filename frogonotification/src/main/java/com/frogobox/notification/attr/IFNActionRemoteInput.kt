@@ -1,4 +1,4 @@
-package com.frogobox.frogonotification.attr
+package com.frogobox.notification.attr
 
 import android.app.PendingIntent
 

@@ -1,4 +1,4 @@
-package com.frogobox.frogonotification
+package com.frogobox.notification
 
 /*
  * Created by Faisal Amir on 28/12/2020

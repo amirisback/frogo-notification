@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
-import com.frogobox.frogonotification.FrogoNotification
-import com.frogobox.frogonotification.attr.IFNInboxStyle
+import com.frogobox.notification.FrogoNotification
+import com.frogobox.notification.attr.IFNInboxStyle
 import com.frogobox.notification.R
 import com.frogobox.notification.databinding.ActivityStackNotifBinding
 

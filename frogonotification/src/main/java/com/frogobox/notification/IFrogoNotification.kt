@@ -1,10 +1,9 @@
-package com.frogobox.frogonotification
+package com.frogobox.notification
 
-import android.app.Notification
 import android.app.PendingIntent
 import androidx.core.app.NotificationCompat
-import com.frogobox.frogonotification.attr.IFNActionRemoteInput
-import com.frogobox.frogonotification.attr.IFNInboxStyle
+import com.frogobox.notification.attr.IFNActionRemoteInput
+import com.frogobox.notification.attr.IFNInboxStyle
 
 /*
  * Created by Faisal Amir on 28/12/2020

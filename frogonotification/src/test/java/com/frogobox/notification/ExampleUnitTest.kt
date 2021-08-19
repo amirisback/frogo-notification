@@ -1,4 +1,4 @@
-package com.frogobox.frogonotification
+package com.frogobox.notification
 
 import org.junit.Test
 

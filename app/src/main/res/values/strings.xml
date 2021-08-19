@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SimpleNotif</string>
+    <string name="app_name">frogo-notification</string>
     <string name="content_title">Content title</string>
     <string name="content_text">Content text</string>
     <string name="subtext">Sub text</string>

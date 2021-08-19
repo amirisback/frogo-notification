@@ -1,4 +1,4 @@
-package com.frogobox.frogonotification
+package com.frogobox.notification
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -10,8 +10,8 @@ import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.RemoteInput
-import com.frogobox.frogonotification.attr.IFNActionRemoteInput
-import com.frogobox.frogonotification.attr.IFNInboxStyle
+import com.frogobox.notification.attr.IFNActionRemoteInput
+import com.frogobox.notification.attr.IFNInboxStyle
 
 /*
  * Created by Faisal Amir on 26/12/2020
