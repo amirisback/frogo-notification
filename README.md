@@ -10,11 +10,14 @@
 - Full documentation
 - Custom Layout Notification
 
-## Screenshoot Library Sample
-|Simple Notification |   Custom Notification (1) |   Custom Notification (2) |   Stack Notification  |
-|:------------------:|:-------------------------:|:-------------------------:|:---------------------:|
-|<img width="200px" height="360px" src="docs/image/ss_simple_notif.gif"> | <img width="200px" height="360px" src="docs/image/ss_custom_layout.gif"> | <img width="200px" height="360px" src="docs/image/ss_reply_notif.gif"> | <img width="200px" height="360px" src="docs/image/ss_stack_notif.gif"> |
+## Screenshoot Sample
+|Simple Notification |   Stack Notification  |
+|:------------------:|:---------------------:|
+|<img width="200px" height="360px" src="docs/image/ss_simple_notif.gif"> | <img width="200px" height="360px" src="docs/image/ss_stack_notif.gif"> |
 
+| Custom Notification (1) |   Custom Notification (2) |
+|:-----------------------:|:-------------------------:|
+|<img width="200px" height="360px" src="docs/image/ss_custom_layout.gif"> | <img width="200px" height="360px" src="docs/image/ss_reply_notif.gif"> |
 
 ## Version Release
 This Is Latest Release
