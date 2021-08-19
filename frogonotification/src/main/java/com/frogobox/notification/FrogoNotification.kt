@@ -10,8 +10,9 @@ import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.RemoteInput
-import com.frogobox.notification.attr.IFNActionRemoteInput
-import com.frogobox.notification.attr.IFNInboxStyle
+import com.frogobox.notification.core.Constant
+import com.frogobox.notification.core.FrogoNotifActionRemoteInputListener
+import com.frogobox.notification.core.FrogoNotifInboxStyleListener
 
 /*
  * Created by Faisal Amir on 26/12/2020
@@ -52,9 +53,9 @@ class FrogoNotification {
         private var groupKey: String? = null
         private var isGroupSummary: Boolean = false
 
-        private var notification_id: Int = Utils.FROGO_NOTIFICATION_ID
-        private var channel_id: String = Utils.FROGO_CHANNEL_ID
-        private var channel_name: String = Utils.FROGO_CHANNEL_NAME
+        private var notification_id: Int = Constant.FROGO_NOTIFICATION_ID
+        private var channel_id: String = Constant.FROGO_CHANNEL_ID
+        private var channel_name: String = Constant.FROGO_CHANNEL_NAME
 
         init {
             Log.d(
@@ -153,41 +154,41 @@ class FrogoNotification {
             return this
         }
 
-        override fun setupActionRemoteInput(listenerIFNActionRemoteInput: IFNActionRemoteInput): Inject {
-            remoteInput = RemoteInput.Builder(listenerIFNActionRemoteInput.setRemoteInputResultKey())
-                .setLabel(listenerIFNActionRemoteInput.setRemoteInputLabel())
+        override fun setupActionRemoteInput(listener: FrogoNotifActionRemoteInputListener): Inject {
+            remoteInput = RemoteInput.Builder(listener.setRemoteInputResultKey())
+                .setLabel(listener.setRemoteInputLabel())
                 .build()
 
             notificationAction = NotificationCompat.Action.Builder(
-                listenerIFNActionRemoteInput.setActionIcon(),
-                listenerIFNActionRemoteInput.setActionTitle(),
-                listenerIFNActionRemoteInput.setActionIntent()
+                listener.setActionIcon(),
+                listener.setActionTitle(),
+                listener.setActionIntent()
             )
                 .addRemoteInput(remoteInput)
-                .setAllowGeneratedReplies(listenerIFNActionRemoteInput.setAllowGeneratedReplies())
+                .setAllowGeneratedReplies(listener.setAllowGeneratedReplies())
                 .build()
 
-            Log.d(FrogoNotification::class.java.simpleName, "RemoteInput (Key) : ${listenerIFNActionRemoteInput.setRemoteInputResultKey()}")
-            Log.d(FrogoNotification::class.java.simpleName, "RemoteInput (Label) : ${listenerIFNActionRemoteInput.setRemoteInputLabel()}")
-            Log.d(FrogoNotification::class.java.simpleName, "Action (Icon) : ${listenerIFNActionRemoteInput.setActionIcon()}")
-            Log.d(FrogoNotification::class.java.simpleName, "Action (Title) : ${listenerIFNActionRemoteInput.setActionTitle()}")
-            Log.d(FrogoNotification::class.java.simpleName, "Action (Intent) : ${listenerIFNActionRemoteInput.setActionIntent()}")
-            Log.d(FrogoNotification::class.java.simpleName, "Action (Generate Replies) : ${listenerIFNActionRemoteInput.setAllowGeneratedReplies()}")
+            Log.d(FrogoNotification::class.java.simpleName, "RemoteInput (Key) : ${listener.setRemoteInputResultKey()}")
+            Log.d(FrogoNotification::class.java.simpleName, "RemoteInput (Label) : ${listener.setRemoteInputLabel()}")
+            Log.d(FrogoNotification::class.java.simpleName, "Action (Icon) : ${listener.setActionIcon()}")
+            Log.d(FrogoNotification::class.java.simpleName, "Action (Title) : ${listener.setActionTitle()}")
+            Log.d(FrogoNotification::class.java.simpleName, "Action (Intent) : ${listener.setActionIntent()}")
+            Log.d(FrogoNotification::class.java.simpleName, "Action (Generate Replies) : ${listener.setAllowGeneratedReplies()}")
 
             return this
         }
 
-        override fun setupInboxStyle(listenerIFNInboxStyle: IFNInboxStyle): Inject {
+        override fun setupInboxStyle(listener: FrogoNotifInboxStyleListener): Inject {
             inboxStyle = NotificationCompat.InboxStyle()
-                .addLine(listenerIFNInboxStyle.addLine1())
-                .addLine(listenerIFNInboxStyle.addLine2())
-                .setBigContentTitle(listenerIFNInboxStyle.setBigContentTitle())
-                .setSummaryText(listenerIFNInboxStyle.setSummaryText())
+                .addLine(listener.addLine1())
+                .addLine(listener.addLine2())
+                .setBigContentTitle(listener.setBigContentTitle())
+                .setSummaryText(listener.setSummaryText())
 
-            Log.d(FrogoNotification::class.java.simpleName, "Inbox Syle (Add Line) : ${listenerIFNInboxStyle.addLine1()}")
-            Log.d(FrogoNotification::class.java.simpleName, "Inbox Syle (Add Line) : ${listenerIFNInboxStyle.addLine2()}")
-            Log.d(FrogoNotification::class.java.simpleName, "Inbox Syle (Big Content Title) : ${listenerIFNInboxStyle.setBigContentTitle()}")
-            Log.d(FrogoNotification::class.java.simpleName, "Inbox Syle (Summary Text) : ${listenerIFNInboxStyle.setSummaryText()}")
+            Log.d(FrogoNotification::class.java.simpleName, "Inbox Syle (Add Line) : ${listener.addLine1()}")
+            Log.d(FrogoNotification::class.java.simpleName, "Inbox Syle (Add Line) : ${listener.addLine2()}")
+            Log.d(FrogoNotification::class.java.simpleName, "Inbox Syle (Big Content Title) : ${listener.setBigContentTitle()}")
+            Log.d(FrogoNotification::class.java.simpleName, "Inbox Syle (Summary Text) : ${listener.setSummaryText()}")
             return this
         }
 

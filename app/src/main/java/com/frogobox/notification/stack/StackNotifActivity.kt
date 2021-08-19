@@ -11,7 +11,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.frogobox.notification.FrogoApp
 import com.frogobox.notification.FrogoNotification
-import com.frogobox.notification.attr.IFNInboxStyle
+import com.frogobox.notification.core.FrogoNotifInboxStyleListener
 import com.frogobox.notification.R
 import com.frogobox.notification.simple.ExpandReceiver
 import com.frogobox.notification.core.BaseActivity
@@ -105,7 +105,7 @@ class StackNotifActivity : BaseActivity<ActivityStackNotifBinding>() {
                 .setContentTitle("$idNotification new emails")
                 .setContentText("mail@frogobox.com")
                 .setGroupSummary()
-                .setupInboxStyle(object : IFNInboxStyle {
+                .setupInboxStyle(object : FrogoNotifInboxStyleListener {
                     override fun addLine1(): String {
                         return "New Email from " + stackNotif[idNotification].sender
                     }

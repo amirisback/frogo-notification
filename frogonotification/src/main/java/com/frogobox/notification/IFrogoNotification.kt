@@ -2,8 +2,8 @@ package com.frogobox.notification
 
 import android.app.PendingIntent
 import androidx.core.app.NotificationCompat
-import com.frogobox.notification.attr.IFNActionRemoteInput
-import com.frogobox.notification.attr.IFNInboxStyle
+import com.frogobox.notification.core.FrogoNotifActionRemoteInputListener
+import com.frogobox.notification.core.FrogoNotifInboxStyleListener
 
 /*
  * Created by Faisal Amir on 28/12/2020
@@ -62,10 +62,10 @@ interface IFrogoNotification {
     fun setupWithVibration(): FrogoNotification.Inject
 
     // Setup Action Remote Input (Reply Usually)
-    fun setupActionRemoteInput(listenerIFNActionRemoteInput: IFNActionRemoteInput): FrogoNotification.Inject
+    fun setupActionRemoteInput(listener: FrogoNotifActionRemoteInputListener): FrogoNotification.Inject
 
     // Setup Inbox Style (For Stack Notification)
-    fun setupInboxStyle(listenerIFNInboxStyle: IFNInboxStyle): FrogoNotification.Inject
+    fun setupInboxStyle(listener: FrogoNotifInboxStyleListener): FrogoNotification.Inject
 
     // Setup Frogo Simple Style Notification
     fun setupWithFrogoStyle(): FrogoNotification.Inject

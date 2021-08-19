@@ -6,7 +6,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.core.app.RemoteInput
 import com.frogobox.notification.FrogoNotification
-import com.frogobox.notification.attr.IFNActionRemoteInput
+import com.frogobox.notification.core.FrogoNotifActionRemoteInputListener
 import com.frogobox.notification.R
 
 
@@ -44,7 +44,7 @@ class NotificationService : IntentService("NotificationService") {
             .setContentTitle(getString(R.string.notif_title))
             .setContentText(getString(R.string.notif_content))
             .showWhen(true)
-            .setupActionRemoteInput(object : IFNActionRemoteInput {
+            .setupActionRemoteInput(object : FrogoNotifActionRemoteInputListener {
                 override fun setRemoteInputResultKey(): String {
                     return KEY_REPLY
                 }

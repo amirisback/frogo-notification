@@ -1,4 +1,4 @@
-package com.frogobox.notification.attr
+package com.frogobox.notification.core
 
 /*
  * Created by Faisal Amir on 28/12/2020
@@ -12,7 +12,7 @@ package com.frogobox.notification.attr
  * All rights reserved
  *
  */
-interface IFNInboxStyle {
+interface FrogoNotifInboxStyleListener {
 
     // Initialize for Inbox Style Add Line
     fun addLine1(): String

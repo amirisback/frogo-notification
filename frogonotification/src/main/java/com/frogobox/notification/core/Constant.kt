@@ -1,4 +1,4 @@
-package com.frogobox.notification
+package com.frogobox.notification.core
 
 /*
  * Created by Faisal Amir on 28/12/2020
@@ -12,7 +12,7 @@ package com.frogobox.notification
  * All rights reserved
  *
  */
-object Utils {
+object Constant {
 
     const val FROGO_NOTIFICATION_ID = 0
     const val FROGO_CHANNEL_ID = "FROGO_CHANNEL_ID"

@@ -1,4 +1,4 @@
-package com.frogobox.notification.attr
+package com.frogobox.notification.core
 
 import android.app.PendingIntent
 
@@ -14,7 +14,7 @@ import android.app.PendingIntent
  * All rights reserved
  *
  */
-interface IFNActionRemoteInput {
+interface FrogoNotifActionRemoteInputListener {
 
     // Initialize for Remote Input Result Key
     fun setRemoteInputResultKey(): String
