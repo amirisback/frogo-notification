@@ -8,23 +8,28 @@
 - Simple and eazy to use
 - With many feature
 - Full documentation
+- Custom Layout Notification
 
 ## Screenshoot Library Sample
-|Simple Notification |   Custom Notification |   Stack Notification  |
-|:------------------:|:---------------------:|:---------------------:|
-|<img width="200px" height="360px" src="docs/image/simple_notif.gif"> | <img width="200px" height="360px" src="docs/image/custom_notif.gif"> | <img width="200px" height="360px" src="docs/image/stack_notif.gif"> |
+|Simple Notification |   Custom Notification (1) |   Custom Notification (2) |   Stack Notification  |
+|:------------------:|:-------------------------:|:-------------------------:|:---------------------:|
+|<img width="200px" height="360px" src="docs/image/ss_simple_notif.gif"> | <img width="200px" height="360px" src="docs/image/ss_custom_layout.gif"> | <img width="200px" height="360px" src="docs/image/ss_reply_notif.gif"> | <img width="200px" height="360px" src="docs/image/ss_stack_notif.gif"> |
 
 
 ## Version Release
 This Is Latest Release
 
-    $version_release = 1.0.5
+    $version_release = 1.0.6
 
 What's New??
 
     * Bug Fixed *
     * Enhance Performance *
     * Update : build.gradle latest version *
+    * Update : Android Gradle Plugin 7.0.0 *
+    * Adding : Custom Layout Notification *
+    * Solving Feature Request *
+    * Solving Issue *
 
 ## Download this project
 
@@ -43,7 +48,7 @@ What's New??
 
     dependencies {
             // library frogo-notification
-            implementation 'com.github.amirisback:frogo-notification:1.0.5'
+            implementation 'com.github.amirisback:frogo-notification:1.0.6'
     }
 
 ### Step 3. Implement frogo-notification (Simple Notification)
@@ -57,7 +62,7 @@ What's New??
         .setContentTitle(resources.getString(R.string.content_title)) // Initialize for Content Title
         .setContentText(resources.getString(R.string.content_text)) // Initialize for Content Text
         .setSubText(resources.getString(R.string.subtext)) // Initialize for Sub Text
-        .setAutoCancel(true) // Initialize for Auto Cancel
+        .setupAutoCancel() // Initialize for Auto Cancel
         .build() // Build the Frogo Notification
         .launch(NOTIFICATION_ID) // Notify the Frogo Notification
 
@@ -74,9 +79,45 @@ What's New??
         .setContentTitle(resources.getString(R.string.content_title)) // Initialize for Content Title
         .setContentText(resources.getString(R.string.content_text)) // Initialize for Content Text
         .setSubText(resources.getString(R.string.subtext)) // Initialize for Sub Text
-        .setAutoCancel(true) // Initialize for Auto Cancel
+        .setupAutoCancel() // Initialize for Auto Cancel
         .build() // Build the Frogo Notification
         .launch(NOTIFICATION_ID) // Notify the Frogo Notification
+
+### Custom Layout (NEW FEATURE)
+
+    val collapsed = object : FrogoNotifCustomContentViewListener {
+        override fun setupCustomView(): Int {
+            return R.layout.notification_collapsed
+        }
+
+        override fun setupComponent(context: Context, customView: RemoteViews) {
+            customView.apply{
+                setTextViewText(R.id.text_view_collapsed_1, "Hello World!")
+            }
+        }
+    }
+
+    val expanded = object : FrogoNotifCustomContentViewListener {
+        override fun setupCustomView(): Int {
+            return R.layout.notification_expanded
+        }
+
+        override fun setupComponent(context: Context, customView: RemoteViews) {
+            customView.apply {
+                setImageViewResource(R.id.image_view_expanded, R.drawable.ic_android)
+                setOnClickPendingIntent(R.id.image_view_expanded, clickPendingIntent)
+            }
+        }
+    }
+
+    FrogoNotification.Inject(this) // Intialize for Context
+        .setChannelId(FrogoApp.CHANNEL_ID) // Intialize for Channel ID
+        .setChannelName(FrogoApp.CHANNEL_NAME) // Initialize for Channel Name
+        .setSmallIcon(R.drawable.ic_android) // Initialize for Small Icon
+        .setCustomContentView(collapsed)
+        .setCustomBigContentView(expanded)
+        .build() // Build the Frogo Notification
+        .launch(FrogoApp.NOTIFICATION_ID) // Notify the Frogo Notification
 
 ### With Action Replay
 
@@ -86,8 +127,8 @@ What's New??
         .setSmallIcon(R.drawable.ic_frogo_notif)
         .setContentTitle(getString(R.string.notif_title))
         .setContentText(getString(R.string.notif_content))
-        .showWhen(true)
-        .setupActionRemoteInput(object : IFNActionRemoteInput {
+        .setupShowWhen()
+        .setupActionRemoteInput(object : FrogoNotifActionRemoteInputListener {
             override fun setRemoteInputResultKey(): String {
                 return KEY_REPLY
             }
@@ -124,7 +165,7 @@ What's New??
         .setSmallIcon(R.drawable.ic_frogo_email)
         .setGroup(GROUP_KEY_EMAILS)
         .setContentIntent(pendingIntent)
-        .setAutoCancel(true)
+        .setupAutoCancel()
 
     // Check if NotificationID is smaller than Max Notif
     if (idNotification < MAX_NOTIFICATION) {
@@ -142,7 +183,7 @@ What's New??
             .setContentTitle("$idNotification new emails")
             .setContentText("mail@frogobox.com")
             .setGroupSummary()
-            .setupInboxStyle(object : IFNInboxStyle {
+            .setupInboxStyle(object : FrogoNotifInboxStyleListener {
                 override fun addLine1(): String {
                     return "New Email from " + stackNotif[idNotification].sender
                 }
