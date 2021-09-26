@@ -1,3 +1,0 @@
-rootProject.name = "FrogoNotification"
-include ':frogonotification'
-include ':app'
