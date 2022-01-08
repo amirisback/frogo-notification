@@ -83,171 +83,171 @@ allprojects {
 
 ### Step 3. Implement frogo-notification (Simple Notification)
 ```kotlin
-    FrogoNotification.Inject(this) // Intialize for Context
-        .setChannelId(CHANNEL_ID) // Intialize for Channel ID
-        .setChannelName(CHANNEL_NAME) // Initialize for Channel Name
-        .setContentIntent(pendingIntent) // Initialize for Content Intent
-        .setSmallIcon(R.drawable.ic_frogo_notif) // Initialize for Small Icon
-        .setLargeIcon(R.drawable.ic_frogo_notif) // Initialize for Large Icon
-        .setContentTitle(resources.getString(R.string.content_title)) // Initialize for Content Title
-        .setContentText(resources.getString(R.string.content_text)) // Initialize for Content Text
-        .setSubText(resources.getString(R.string.subtext)) // Initialize for Sub Text
-        .setupAutoCancel() // Initialize for Auto Cancel
-        .build() // Build the Frogo Notification
-        .launch(NOTIFICATION_ID) // Notify the Frogo Notification
+FrogoNotification.Inject(this) // Intialize for Context
+    .setChannelId(CHANNEL_ID) // Intialize for Channel ID
+    .setChannelName(CHANNEL_NAME) // Initialize for Channel Name
+    .setContentIntent(pendingIntent) // Initialize for Content Intent
+    .setSmallIcon(R.drawable.ic_frogo_notif) // Initialize for Small Icon
+    .setLargeIcon(R.drawable.ic_frogo_notif) // Initialize for Large Icon
+    .setContentTitle(resources.getString(R.string.content_title)) // Initialize for Content Title
+    .setContentText(resources.getString(R.string.content_text)) // Initialize for Content Text
+    .setSubText(resources.getString(R.string.subtext)) // Initialize for Sub Text
+    .setupAutoCancel() // Initialize for Auto Cancel
+    .build() // Build the Frogo Notification
+    .launch(NOTIFICATION_ID) // Notify the Frogo Notification
 ```
 
 ## Feature frogo-notification
 
 ### Simple Notification
 ```kotlin
-    FrogoNotification.Inject(this) // Intialize for Context
-        .setChannelId(CHANNEL_ID) // Intialize for Channel ID
-        .setChannelName(CHANNEL_NAME) // Initialize for Channel Name
-        .setContentIntent(pendingIntent) // Initialize for Content Intent
-        .setSmallIcon(R.drawable.ic_frogo_notif) // Initialize for Small Icon
-        .setLargeIcon(R.drawable.ic_frogo_notif) // Initialize for Large Icon
-        .setContentTitle(resources.getString(R.string.content_title)) // Initialize for Content Title
-        .setContentText(resources.getString(R.string.content_text)) // Initialize for Content Text
-        .setSubText(resources.getString(R.string.subtext)) // Initialize for Sub Text
-        .setupAutoCancel() // Initialize for Auto Cancel
-        .build() // Build the Frogo Notification
-        .launch(NOTIFICATION_ID) // Notify the Frogo Notification
+FrogoNotification.Inject(this) // Intialize for Context
+    .setChannelId(CHANNEL_ID) // Intialize for Channel ID
+    .setChannelName(CHANNEL_NAME) // Initialize for Channel Name
+    .setContentIntent(pendingIntent) // Initialize for Content Intent
+    .setSmallIcon(R.drawable.ic_frogo_notif) // Initialize for Small Icon
+    .setLargeIcon(R.drawable.ic_frogo_notif) // Initialize for Large Icon
+    .setContentTitle(resources.getString(R.string.content_title)) // Initialize for Content Title
+    .setContentText(resources.getString(R.string.content_text)) // Initialize for Content Text
+    .setSubText(resources.getString(R.string.subtext)) // Initialize for Sub Text
+    .setupAutoCancel() // Initialize for Auto Cancel
+    .build() // Build the Frogo Notification
+    .launch(NOTIFICATION_ID) // Notify the Frogo Notification
 ```
 
 ### Custom Layout (NEW FEATURE)
 ```kotlin
-    val collapsed = object : FrogoNotifCustomContentViewListener {
-        override fun setupCustomView(): Int {
-            return R.layout.notification_collapsed
-        }
-
-        override fun setupComponent(context: Context, customView: RemoteViews) {
-            customView.apply{
-                setTextViewText(R.id.text_view_collapsed_1, "Hello World!")
-            }
-        }
+val collapsed = object : FrogoNotifCustomContentViewListener {
+    override fun setupCustomView(): Int {
+        return R.layout.notification_collapsed
     }
 
-    val expanded = object : FrogoNotifCustomContentViewListener {
-        override fun setupCustomView(): Int {
-            return R.layout.notification_expanded
-        }
-
-        override fun setupComponent(context: Context, customView: RemoteViews) {
-            customView.apply {
-                setImageViewResource(R.id.image_view_expanded, R.drawable.ic_android)
-                setOnClickPendingIntent(R.id.image_view_expanded, clickPendingIntent)
-            }
+    override fun setupComponent(context: Context, customView: RemoteViews) {
+        customView.apply{
+            setTextViewText(R.id.text_view_collapsed_1, "Hello World!")
         }
     }
+}
 
-    FrogoNotification.Inject(this) // Intialize for Context
-        .setChannelId(FrogoApp.CHANNEL_ID) // Intialize for Channel ID
-        .setChannelName(FrogoApp.CHANNEL_NAME) // Initialize for Channel Name
-        .setSmallIcon(R.drawable.ic_android) // Initialize for Small Icon
-        .setCustomContentView(collapsed)
-        .setCustomBigContentView(expanded)
-        .build() // Build the Frogo Notification
-        .launch(FrogoApp.NOTIFICATION_ID) // Notify the Frogo Notification
+val expanded = object : FrogoNotifCustomContentViewListener {
+    override fun setupCustomView(): Int {
+        return R.layout.notification_expanded
+    }
+
+    override fun setupComponent(context: Context, customView: RemoteViews) {
+        customView.apply {
+            setImageViewResource(R.id.image_view_expanded, R.drawable.ic_android)
+            setOnClickPendingIntent(R.id.image_view_expanded, clickPendingIntent)
+        }
+    }
+}
+
+FrogoNotification.Inject(this) // Intialize for Context
+    .setChannelId(FrogoApp.CHANNEL_ID) // Intialize for Channel ID
+    .setChannelName(FrogoApp.CHANNEL_NAME) // Initialize for Channel Name
+    .setSmallIcon(R.drawable.ic_android) // Initialize for Small Icon
+    .setCustomContentView(collapsed)
+    .setCustomBigContentView(expanded)
+    .build() // Build the Frogo Notification
+    .launch(FrogoApp.NOTIFICATION_ID) // Notify the Frogo Notification
 ```
 
 ### With Action Replay
 ```kotlin
-    FrogoNotification.Inject(this)
-        .setChannelId(CHANNEL_ID)
-        .setChannelName(CHANNEL_NAME as String)
-        .setSmallIcon(R.drawable.ic_frogo_notif)
-        .setContentTitle(getString(R.string.notif_title))
-        .setContentText(getString(R.string.notif_content))
-        .setupShowWhen()
-        .setupActionRemoteInput(object : FrogoNotifActionRemoteInputListener {
-            override fun setRemoteInputResultKey(): String {
-                return KEY_REPLY
-            }
+FrogoNotification.Inject(this)
+    .setChannelId(CHANNEL_ID)
+    .setChannelName(CHANNEL_NAME as String)
+    .setSmallIcon(R.drawable.ic_frogo_notif)
+    .setContentTitle(getString(R.string.notif_title))
+    .setContentText(getString(R.string.notif_content))
+    .setupShowWhen()
+    .setupActionRemoteInput(object : FrogoNotifActionRemoteInputListener {
+        override fun setRemoteInputResultKey(): String {
+            return KEY_REPLY
+        }
 
-            override fun setRemoteInputLabel(): String {
-                return getString(R.string.notif_action_reply)
-            }
+        override fun setRemoteInputLabel(): String {
+            return getString(R.string.notif_action_reply)
+        }
 
-            override fun setActionIcon(): Int {
-                return R.drawable.ic_frogo_send
-            }
+        override fun setActionIcon(): Int {
+            return R.drawable.ic_frogo_send
+        }
 
-            override fun setActionTitle(): String {
-                return getString(R.string.notif_action_reply)
-            }
+        override fun setActionTitle(): String {
+            return getString(R.string.notif_action_reply)
+        }
 
-            override fun setActionIntent(): PendingIntent? {
-                return getReplyPendingIntent()
-            }
+        override fun setActionIntent(): PendingIntent? {
+            return getReplyPendingIntent()
+        }
 
-            override fun setAllowGeneratedReplies(): Boolean {
-                return true
-            }
-        })
-        .build()
-        .launch(mNotificationId)
+        override fun setAllowGeneratedReplies(): Boolean {
+            return true
+        }
+    })
+    .build()
+    .launch(mNotificationId)
 ```
 
 ### With Inbox Style (Stack)
 ```kotlin
-    val frogoNotification = FrogoNotification.Inject(this)
-        .setChannelId(CHANNEL_ID)
-        .setChannelName(CHANNEL_NAME)
-        .setSmallIcon(R.drawable.ic_frogo_email)
-        .setGroup(GROUP_KEY_EMAILS)
-        .setContentIntent(pendingIntent)
-        .setupAutoCancel()
+val frogoNotification = FrogoNotification.Inject(this)
+    .setChannelId(CHANNEL_ID)
+    .setChannelName(CHANNEL_NAME)
+    .setSmallIcon(R.drawable.ic_frogo_email)
+    .setGroup(GROUP_KEY_EMAILS)
+    .setContentIntent(pendingIntent)
+    .setupAutoCancel()
 
-    // Check if NotificationID is smaller than Max Notif
-    if (idNotification < MAX_NOTIFICATION) {
+// Check if NotificationID is smaller than Max Notif
+if (idNotification < MAX_NOTIFICATION) {
 
-        stackNotif[idNotification].message?.let {
-            frogoNotification
-                .setContentTitle("New Email from " + stackNotif[idNotification].sender)
-                .setContentText(it)
-                .setLargeIcon(R.drawable.ic_frogo_notif)
-        }
-
-    } else {
-
+    stackNotif[idNotification].message?.let {
         frogoNotification
-            .setContentTitle("$idNotification new emails")
-            .setContentText("mail@frogobox.com")
-            .setGroupSummary()
-            .setupInboxStyle(object : FrogoNotifInboxStyleListener {
-                override fun addLine1(): String {
-                    return "New Email from " + stackNotif[idNotification].sender
-                }
-
-                override fun addLine2(): String {
-                    return "New Email from " + stackNotif[idNotification - 1].sender
-                }
-
-                override fun setBigContentTitle(): String {
-                    return "$idNotification new emails"
-                }
-
-                override fun setSummaryText(): String {
-                    return "mail@frogobox"
-                }
-            })
-
+            .setContentTitle("New Email from " + stackNotif[idNotification].sender)
+            .setContentText(it)
+            .setLargeIcon(R.drawable.ic_frogo_notif)
     }
 
+} else {
+
     frogoNotification
-        .build()
-        .launch(idNotification)
+        .setContentTitle("$idNotification new emails")
+        .setContentText("mail@frogobox.com")
+        .setGroupSummary()
+        .setupInboxStyle(object : FrogoNotifInboxStyleListener {
+            override fun addLine1(): String {
+                return "New Email from " + stackNotif[idNotification].sender
+            }
+
+            override fun addLine2(): String {
+                return "New Email from " + stackNotif[idNotification - 1].sender
+            }
+
+            override fun setBigContentTitle(): String {
+                return "$idNotification new emails"
+            }
+
+            override fun setSummaryText(): String {
+                return "mail@frogobox"
+            }
+        })
+
+}
+
+frogoNotification
+    .build()
+    .launch(idNotification)
 ```
 
 ### With Frogo Style
 ```kotlin
-        FrogoNotification.Inject(this) // Intialize for Context
-            .setSmallIcon(R.drawable.ic_frogo_notif) // Initialize for Small Icon
-            .setupWithFrogoStyle()
-            .build() // Build the Frogo Notification
-            .launch(NOTIFICATION_ID) // Notify the Frogo Notification
+FrogoNotification.Inject(this) // Intialize for Context
+    .setSmallIcon(R.drawable.ic_frogo_notif) // Initialize for Small Icon
+    .setupWithFrogoStyle()
+    .build() // Build the Frogo Notification
+    .launch(NOTIFICATION_ID) // Notify the Frogo Notification
 ```
 
 ### For Documentation
