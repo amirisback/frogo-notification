@@ -1,6 +1,7 @@
 ![ScreenShoot Apps](docs/image/ss_banner.png?raw=true)
 
 ## About This Project
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-frogo--notification-brightgreen.svg?style=flat-square)](https://android-arsenal.com/details/1/8318)
 [![JitPack](https://jitpack.io/v/amirisback/frogo-notification.svg?style=flat-square)](https://jitpack.io/#amirisback/frogo-notification)
 - SDK for your notification problem to make easier developing android apps
 - frogo-notification is under huge large development
@@ -22,14 +23,15 @@
 ## Version Release
 This Is Latest Release
 
-    $version_release = 1.0.7
+    $version_release = 1.0.8
 
 What's New??
 
     * Bug Fixed *
     * Enhance Performance *
     * Update : build.gradle latest version *
-    * Update : Android Gradle Plugin 7.0.1 *
+    * Update : Android Gradle Plugin 7.0.4 *
+    * Update : Kotlin Version 1.6.10 *
     * Adding : Custom Layout Notification *
     * Solving Feature Request *
     * Solving Issue *
@@ -38,24 +40,49 @@ What's New??
 
 ### Step 1. Add the JitPack repository to your build file (build.gradle : Project)
 
-    Add it in your root build.gradle at the end of repositories:
 
-    	allprojects {
-    		repositories {
-    			...
-    			maven { url 'https://jitpack.io' }
-    		}
-    	}
+#### <Option 1> Groovy Gradle
+
+    // Add it in your root build.gradle at the end of repositories:
+
+    allprojects {
+        repositories {
+            ...
+            maven { url 'https://jitpack.io' }
+        }
+    }
+
+#### <Option 2> Kotlin DSL Gradle
+
+```kotlin
+// Add it in your root build.gradle.kts at the end of repositories:
+
+allprojects {
+    repositories {
+        ...
+        maven { url = uri("https://jitpack.io") }
+    }
+}
+```
 
 ### Step 2. Add the dependency (build.gradle : Module)
 
+#### <Option 1> Groovy Gradle
+
     dependencies {
-            // library frogo-notification
-            implementation 'com.github.amirisback:frogo-notification:1.0.7'
+        // library frogo-notification
+        implementation 'com.github.amirisback:frogo-notification:1.0.8'
+    }
+
+#### <Option 2> Kotlin DSL Gradle
+
+    dependencies {
+        // library frogo-notification
+        implementation("com.github.amirisback:frogo-notification:1.0.8")
     }
 
 ### Step 3. Implement frogo-notification (Simple Notification)
-
+```kotlin
     FrogoNotification.Inject(this) // Intialize for Context
         .setChannelId(CHANNEL_ID) // Intialize for Channel ID
         .setChannelName(CHANNEL_NAME) // Initialize for Channel Name
@@ -68,11 +95,12 @@ What's New??
         .setupAutoCancel() // Initialize for Auto Cancel
         .build() // Build the Frogo Notification
         .launch(NOTIFICATION_ID) // Notify the Frogo Notification
+```
 
 ## Feature frogo-notification
 
 ### Simple Notification
-
+```kotlin
     FrogoNotification.Inject(this) // Intialize for Context
         .setChannelId(CHANNEL_ID) // Intialize for Channel ID
         .setChannelName(CHANNEL_NAME) // Initialize for Channel Name
@@ -85,9 +113,10 @@ What's New??
         .setupAutoCancel() // Initialize for Auto Cancel
         .build() // Build the Frogo Notification
         .launch(NOTIFICATION_ID) // Notify the Frogo Notification
+```
 
 ### Custom Layout (NEW FEATURE)
-
+```kotlin
     val collapsed = object : FrogoNotifCustomContentViewListener {
         override fun setupCustomView(): Int {
             return R.layout.notification_collapsed
@@ -121,9 +150,10 @@ What's New??
         .setCustomBigContentView(expanded)
         .build() // Build the Frogo Notification
         .launch(FrogoApp.NOTIFICATION_ID) // Notify the Frogo Notification
+```
 
 ### With Action Replay
-
+```kotlin
     FrogoNotification.Inject(this)
         .setChannelId(CHANNEL_ID)
         .setChannelName(CHANNEL_NAME as String)
@@ -158,10 +188,10 @@ What's New??
         })
         .build()
         .launch(mNotificationId)
-
+```
 
 ### With Inbox Style (Stack)
-
+```kotlin
     val frogoNotification = FrogoNotification.Inject(this)
         .setChannelId(CHANNEL_ID)
         .setChannelName(CHANNEL_NAME)
@@ -209,15 +239,16 @@ What's New??
     frogoNotification
         .build()
         .launch(idNotification)
+```
 
 ### With Frogo Style
-
+```kotlin
         FrogoNotification.Inject(this) // Intialize for Context
             .setSmallIcon(R.drawable.ic_frogo_notif) // Initialize for Small Icon
             .setupWithFrogoStyle()
             .build() // Build the Frogo Notification
             .launch(NOTIFICATION_ID) // Notify the Frogo Notification
-
+```
 
 ### For Documentation
 
