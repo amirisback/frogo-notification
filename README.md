@@ -23,18 +23,11 @@
 ## Version Release
 This Is Latest Release
 
-    $version_release = 1.0.8
+    $version_release = 1.0.9
 
 What's New??
 
-    * Bug Fixed *
-    * Enhance Performance *
-    * Update : build.gradle latest version *
-    * Update : Android Gradle Plugin 7.0.4 *
-    * Update : Kotlin Version 1.6.10 *
-    * Adding : Custom Layout Notification *
-    * Solving Feature Request *
-    * Solving Issue *
+    * Update Build Gradle Version *
 
 ## Download this project
 
@@ -71,14 +64,14 @@ allprojects {
 
     dependencies {
         // library frogo-notification
-        implementation 'com.github.amirisback:frogo-notification:1.0.8'
+        implementation 'com.github.amirisback:frogo-notification:1.0.9'
     }
 
 #### <Option 2> Kotlin DSL Gradle
 
     dependencies {
         // library frogo-notification
-        implementation("com.github.amirisback:frogo-notification:1.0.8")
+        implementation("com.github.amirisback:frogo-notification:1.0.9")
     }
 
 ### Step 3. Implement frogo-notification (Simple Notification)
