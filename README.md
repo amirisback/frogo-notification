@@ -3,6 +3,8 @@
 ## About This Project
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-frogo--notification-brightgreen.svg?style=flat-square)](https://android-arsenal.com/details/1/8318)
 [![JitPack](https://jitpack.io/v/amirisback/frogo-notification.svg?style=flat-square)](https://jitpack.io/#amirisback/frogo-notification)
+- Privacy Policy [Click Here](https://github.com/amirisback/frogo-notification/blob/master/PRIVACY-POLICY.md)
+- LICENSE [Click Here](https://github.com/amirisback/frogo-notification/blob/master/LICENSE)
 - SDK for your notification problem to make easier developing android apps
 - frogo-notification is under huge large development
 - Notification with singleton method
@@ -23,7 +25,7 @@
 ## Version Release
 This Is Latest Release
 
-    $version_release = 1.0.9
+    $version_release = 1.1.0
 
 What's New??
 
@@ -64,14 +66,14 @@ allprojects {
 
     dependencies {
         // library frogo-notification
-        implementation 'com.github.amirisback:frogo-notification:1.0.9'
+        implementation 'com.github.amirisback:frogo-notification:1.1.0'
     }
 
 #### <Option 2> Kotlin DSL Gradle
 
     dependencies {
         // library frogo-notification
-        implementation("com.github.amirisback:frogo-notification:1.0.9")
+        implementation("com.github.amirisback:frogo-notification:1.1.0")
     }
 
 ### Step 3. Implement frogo-notification (Simple Notification)

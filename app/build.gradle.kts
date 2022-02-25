@@ -25,9 +25,24 @@ android {
 
     }
 
+    signingConfigs {
+        create("release") {
+            // You need to specify either an absolute path or include the
+            // keystore file in the same directory as the build.gradle file.
+            // [PROJECT FOLDER NAME/app/[COPY YOUT KEY STORE] .jks in here
+            storeFile = file(ProjectSetting.PLAYSTORE_STORE_FILE)
+            storePassword = ProjectSetting.PLAYSTORE_STORE_PASSWORD
+            keyAlias = ProjectSetting.PLAYSTORE_KEY_ALIAS
+            keyPassword = ProjectSetting.PLAYSTORE_KEY_PASSWORD
+        }
+    }
+
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
+
+            // Generated Signed APK / AAB
+            signingConfig = signingConfigs.getByName("release")
 
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -57,7 +72,6 @@ android {
         }
     }
 
-
 }
 
 
@@ -70,9 +84,7 @@ dependencies {
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")
+    implementation("androidx.work:work-runtime-ktx:2.7.1")
     implementation("com.google.android.material:material:1.5.0")
 
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
 }
