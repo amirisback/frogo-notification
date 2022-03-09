@@ -79,8 +79,13 @@ dependencies {
     
     // Library FrogoNotification
     implementation(project(":frogonotification"))
-    
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:${Dependency.KOTLIN_VERSION}")
+
+    implementation(Androidx.Core.ktx)
+    implementation(Androidx.appCompat)
+    implementation(Androidx.constraintLayout)
+    implementation(Androidx.Work.runtimeKtx)
+    implementation(Google.material)
+
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.3")

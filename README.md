@@ -25,7 +25,7 @@
 ## Version Release
 This Is Latest Release
 
-    $version_release = 1.1.0
+    $version_release = 1.1.1
 
 What's New??
 
@@ -66,14 +66,14 @@ allprojects {
 
     dependencies {
         // library frogo-notification
-        implementation 'com.github.amirisback:frogo-notification:1.1.0'
+        implementation 'com.github.amirisback:frogo-notification:1.1.1'
     }
 
 #### <Option 2> Kotlin DSL Gradle
 
     dependencies {
         // library frogo-notification
-        implementation("com.github.amirisback:frogo-notification:1.1.0")
+        implementation("com.github.amirisback:frogo-notification:1.1.1")
     }
 
 ### Step 3. Implement frogo-notification (Simple Notification)

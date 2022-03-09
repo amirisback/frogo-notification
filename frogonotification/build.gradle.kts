@@ -55,8 +55,7 @@ android {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:${Dependency.KOTLIN_VERSION}")
-    implementation("androidx.appcompat:appcompat:1.4.1")
+    implementation(Androidx.appCompat)
 }
 
 afterEvaluate {
