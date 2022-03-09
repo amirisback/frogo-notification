@@ -4,16 +4,17 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
-import com.frogobox.notification.FrogoNotification
+import android.widget.RemoteViews
+import androidx.annotation.RequiresApi
+import com.frogobox.appnotif.FrogoApp
+import com.frogobox.appnotif.R
 import com.frogobox.appnotif.core.BaseActivity
 import com.frogobox.appnotif.custom.CustomNotifActivity
 import com.frogobox.appnotif.databinding.ActivityMainBinding
 import com.frogobox.appnotif.stack.StackNotifActivity
-
-import android.widget.RemoteViews
-import com.frogobox.appnotif.FrogoApp
-import com.frogobox.appnotif.R
+import com.frogobox.notification.FrogoNotification
 import com.frogobox.notification.core.FrogoNotifCustomContentViewListener
 
 
@@ -29,6 +30,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         return ActivityMainBinding.inflate(layoutInflater)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -57,7 +59,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
     private fun sendNotification() {
 
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/amirisback"))
-        val pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
+        val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         FrogoNotification.Inject(this) // Intialize for Context
             .setChannelId(CHANNEL_ID) // Intialize for Channel ID
@@ -74,9 +76,11 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun sendNotificationCustom() {
         val clickIntent = Intent(this, MainReceiver::class.java)
-        val clickPendingIntent = PendingIntent.getBroadcast(this, 0, clickIntent, 0)
+        val clickPendingIntent =
+            PendingIntent.getBroadcast(this, 0, clickIntent, PendingIntent.FLAG_IMMUTABLE)
 
         val collapsed = object : FrogoNotifCustomContentViewListener {
             override fun setupCustomView(): Int {
@@ -84,7 +88,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             }
 
             override fun setupComponent(context: Context, customView: RemoteViews) {
-                customView.apply{
+                customView.apply {
                     setTextViewText(R.id.text_view_collapsed_1, "Hello World!")
                 }
             }
