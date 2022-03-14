@@ -16,13 +16,21 @@
 - Custom Layout Notification
 
 ## Screenshoot Sample
-|Simple Notification |   Stack Notification  |
-|:------------------:|:---------------------:|
-|<img width="200px" height="360px" src="docs/image/ss_simple_notif.gif"> | <img width="200px" height="360px" src="docs/image/ss_stack_notif.gif"> |
 
-| Custom Notification (1) |   Custom Notification (2) |
-|:-----------------------:|:-------------------------:|
-|<img width="200px" height="360px" src="docs/image/ss_custom_layout.gif"> | <img width="200px" height="360px" src="docs/image/ss_reply_notif.gif"> |
+<table>
+    <tr>
+        <th>Simple Notification</th>
+        <th>Stack Notification</th>
+        <th>Custom Notification (1)</th>
+        <th>Custom Notification (2)</th>
+    </tr>
+    <tr>
+        <td><img width="200px" height="360px" src="docs/image/ss_simple_notif.gif"></td>
+        <td><img width="200px" height="360px" src="docs/image/ss_stack_notif.gif"></td>
+        <td><img width="200px" height="360px" src="docs/image/ss_custom_layout.gif"></td>
+        <td><img width="200px" height="360px" src="docs/image/ss_reply_notif.gif"></td>
+    </tr>
+</table>
 
 ## Version Release
 This Is Latest Release
