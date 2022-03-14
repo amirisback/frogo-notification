@@ -3,6 +3,8 @@
 ## About This Project
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-frogo--notification-brightgreen.svg?style=flat-square)](https://android-arsenal.com/details/1/8318)
 [![JitPack](https://jitpack.io/v/amirisback/frogo-notification.svg?style=flat-square)](https://jitpack.io/#amirisback/frogo-notification)
+[![Android CI](https://github.com/amirisback/frogo-notification/actions/workflows/android-ci.yml/badge.svg)](https://github.com/amirisback/frogo-notification/actions/workflows/android-ci.yml)
+[![Scan with Detekt](https://github.com/amirisback/frogo-notification/actions/workflows/detekt-analysis.yml/badge.svg)](https://github.com/amirisback/frogo-notification/actions/workflows/detekt-analysis.yml)
 - Privacy Policy [Click Here](https://github.com/amirisback/frogo-notification/blob/master/PRIVACY-POLICY.md)
 - LICENSE [Click Here](https://github.com/amirisback/frogo-notification/blob/master/LICENSE)
 - SDK for your notification problem to make easier developing android apps
