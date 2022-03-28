@@ -1,4 +1,7 @@
-![ScreenShoot Apps](docs/image/ss_banner.png?raw=true)
+![ScreenShoot Apps](https://raw.githubusercontent.com/amirisback/amirisback/master/docs/image/deprecated.png?raw=true)
+## Alert
+- Please Move To [FrogoSDK](github.com/frogobox/frogo-sdk)
+- Not Developed Again
 
 ## About This Project
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-frogo--notification-brightgreen.svg?style=flat-square)](https://android-arsenal.com/details/1/8318)
